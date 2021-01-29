@@ -1,8 +1,34 @@
+<mat-carousel
+  timings="250ms ease-in"
+  [autoplay]="true"
+  interval="5000"
+  color="accent"
+  maxWidth="auto"
+  proportion="25"
+  slides="2"
+  [loop]="true"
+  [hideArrows]="false"
+  [hideIndicators]="false"
+  [useKeyboard]="true"
+  [useMouseWheel]="false"
+  orientation="ltr"
+>
+  <mat-carousel-slide
+    #matCarouselSlide
+    image="assets/images/slider1.jpg"
+    overlayColor="#00000040"
+    [hideOverlay]="false"
+  ></mat-carousel-slide>
+  <mat-carousel-slide
+    #matCarouselSlide
+    image="assets/images/slider2.jpg"
+    overlayColor="#00000040"
+    [hideOverlay]="false"
+  ></mat-carousel-slide>
+</mat-carousel>
 <mat-grid-list cols="15" rowHeight="100px">
-  <mat-grid-tile [colspan]=2 >
+  <mat-grid-tile [colspan]=12 [style.background]="'red'">
   </mat-grid-tile>
-  <mat-grid-tile [colspan]=11 [style.background]="'red'">
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]=2 [rowspan]=100 [style.background]="'lightblue'">
+  <mat-grid-tile [colspan]=3 [style.background]="'lightblue'">
   </mat-grid-tile>
 </mat-grid-list>

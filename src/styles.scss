@@ -2,3 +2,28 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$light-custom-theme-primary: mat-palette($mat-blue);
+$light-custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$light-custom-theme-warn: mat-palette($mat-red);
+$light-custom-theme: mat-light-theme($light-custom-theme-primary, $light-custom-theme-accent, $light-custom-theme-warn);
+
+.light-theme {
+  @include angular-material-theme($light-custom-theme);
+}
+
+
+
+$custom-theme-primary: mat-palette($mat-blue);
+$custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+$custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+
+.dark-theme {
+  @include angular-material-theme($custom-theme);
+}

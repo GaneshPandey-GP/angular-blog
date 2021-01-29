@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,7 +30,8 @@ import { HeaderComponent } from './header/header.component';
     MatButtonModule,
     MatIconModule,
     MatGridListModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

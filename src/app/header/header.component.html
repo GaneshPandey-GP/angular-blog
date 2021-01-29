@@ -1,9 +1,16 @@
-<mat-toolbar>
+<mat-toolbar style="padding: 20px;">
   <span>My App</span>
   <span class="spacer"></span>
-  <div fxLayout="row" fxShow="true" fxShow.gt-sm >
-    <button mat-button routerLink="/category">Category</button>
-    <button mat-button routerLink="/dashboard">Dashboard</button>
+  <div fxLayout="row" fxShow="true" fxShow.gt-sm>
+    <button mat-button routerLink="/dashboard">Home</button>
+
+    <button mat-button [matMenuTriggerFor]="menu">Category</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    
   </div>
   <span class="spacer"></span>
 

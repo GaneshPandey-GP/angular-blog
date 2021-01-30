@@ -1,6 +1,8 @@
-<button mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
-  Category Options
-</button>
+<div class="button-row">
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
+    Category Options
+  </button>
+</div>
 <mat-menu #categoryMenu="matMenu">
   <button mat-menu-item (click)="viewCategory()">
     <mat-icon>preview</mat-icon>

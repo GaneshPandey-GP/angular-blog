@@ -14,16 +14,19 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { TrendingComponent } from './trending/trending.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { HeaderComponent } from './header/header.component';
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

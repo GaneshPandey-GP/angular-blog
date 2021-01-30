@@ -1,0 +1,21 @@
+p {
+    font-family: Lato;
+    }
+    .example-card {
+    max-width: 500px;
+    margin: 4px
+    }
+    
+    mat-card-subtitle{
+    font-size:30px
+    }
+    
+    mat-card-title{
+    color:green;
+    font-size:40px
+    }
+    
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

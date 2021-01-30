@@ -1,17 +1,17 @@
-<button mat-card mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
+<button mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
   Category Options
 </button>
 <mat-menu #categoryMenu="matMenu">
   <button mat-menu-item (click)="viewCategory()">
-    <mat-icon>dialpad</mat-icon>
+    <mat-icon>preview</mat-icon>
     <span>View Category</span>
   </button>
   <button mat-menu-item (click)="createCategory()">
-    <mat-icon>voicemail</mat-icon>
+    <mat-icon>add_circle</mat-icon>
     <span>Create Category</span>
   </button>
   <button mat-menu-item (click)="viewCategoryStatistics()">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon>analytics</mat-icon>
     <span>View Category Statistics</span>
   </button>
 </mat-menu>

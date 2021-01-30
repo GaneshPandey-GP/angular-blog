@@ -13,45 +13,50 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 @Component({
-  selector: 'app-create-category',
-  templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.scss']
+  selector: 'app-create-subcategory',
+  templateUrl: './create-subcategory.component.html',
+  styleUrls: ['./create-subcategory.component.scss']
 })
-export class CreateCategoryComponent {
+export class CreateSubcategoryComponent {
   categoryNameControl = new FormControl('', [
       Validators.required,
     ]);
 
+  selectFormControl = new FormControl('', Validators.required);
+
   matcher = new MyErrorStateMatcher();
-  createCategoryForm = new FormGroup({
-    name: new FormControl('')
+
+  createSubCategoryForm = new FormGroup({
+    name: new FormControl(''),
+    category: new FormControl('')
   });
 
-  constructor(private adminService:AdminService, private router: Router, private _snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateCategoryComponent>){}
+  constructor(private adminService:AdminService, private router: Router, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateSubcategoryComponent>){}
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000,
     });
   }
-  createCategory() {
-    if(this.createCategoryForm.value.name!=''){
+  createSubCategory() {
+    console.log(this.createSubCategoryForm.value);
+
+    if(this.createSubCategoryForm.value.name!='' && this.createSubCategoryForm.value.category!=''){
       // this.adminService
-      //   .createCategory(this.createCategoryForm.value.name)
+      //   .createSubCategory(this.createSubCategoryForm.value.name, this.createSubCategoryForm.value.category)
       //   .subscribe(
       //     data => {
       //       console.log('data ', data);
       //       if(data.length == 0) {
-      //         throw new Error('Error Registering User... ');
+      //         throw new Error('Error Creating Sub-Category... ');
       //         this.openSnackBar("Error Registering User", "Close");
       //       } else {
       //         this.success(data);
-      //         this.openSnackBar("User Registered Successfully", "Close");
-      //         this.router.navigate(['/login']);
+      //         this.openSnackBar("Sub-Category Created Successfully", "Close");
       //       }
       //     },
       //     err => console.log(err)
       //   );
-      this.openSnackBar("Category Created Successfully", "Close");
+      this.openSnackBar("Sub-Category Created Successfully", "Close");
       this.close();
     }
   }

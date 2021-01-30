@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateCategoryComponent } from "../create-category/create-category.component";
 import { ViewCategoriesComponent } from "../view-categories/view-categories.component";
+import { CreateSubcategoryComponent } from "../create-subcategory/create-subcategory.component";
+import { ViewSubcategoryComponent } from "../view-subcategory/view-subcategory.component";
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 
 @Component({
@@ -27,6 +29,15 @@ export class AdminHeadComponent implements OnInit {
 
   }
   viewCategoryStatistics(){
+
+  }
+  viewSubCategory(){
+
+  }
+  createSubCategory(){
+    const dialogRef = this.dialog.open(CreateSubcategoryComponent);
+  }
+  viewSubCategoryStatistics(){
 
   }
 

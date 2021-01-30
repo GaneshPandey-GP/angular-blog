@@ -35,6 +35,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminHeadComponent } from './admin-head/admin-head.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ViewCategoriesComponent } from './view-categories/view-categories.component';
+import { CreateSubcategoryComponent } from './create-subcategory/create-subcategory.component';
+import { ViewSubcategoryComponent } from './view-subcategory/view-subcategory.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ViewCategoriesComponent } from './view-categories/view-categories.compo
     AdminComponent,
     AdminHeadComponent,
     CreateCategoryComponent,
-    ViewCategoriesComponent
+    ViewCategoriesComponent,
+    CreateSubcategoryComponent,
+    ViewSubcategoryComponent
   ],
   imports: [
     BrowserModule,

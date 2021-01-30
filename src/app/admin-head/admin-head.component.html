@@ -2,14 +2,11 @@
   <button mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
     Category Options
   </button>
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
-    Category Options
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="subCategoryMenu" class="expansion-style" >
+    Sub Category Options
   </button>
-  <button mat-raised-button color="warn" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
-    Category Options
-  </button>
-  <button mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
-    Category Options
+  <button mat-raised-button color="warn" [matMenuTriggerFor]="blogMenu" class="expansion-style" >
+    Blog Options
   </button>
 </div>
 <mat-menu #categoryMenu="matMenu">
@@ -24,5 +21,33 @@
   <button mat-menu-item (click)="viewCategoryStatistics()">
     <mat-icon>analytics</mat-icon>
     <span>View Category Statistics</span>
+  </button>
+</mat-menu>
+<mat-menu #subCategoryMenu="matMenu">
+  <button mat-menu-item (click)="viewSubCategory()">
+    <mat-icon>preview</mat-icon>
+    <span>View Sub Categories</span>
+  </button>
+  <button mat-menu-item (click)="createSubCategory()">
+    <mat-icon>add_circle</mat-icon>
+    <span>Create Sub Category</span>
+  </button>
+  <button mat-menu-item (click)="viewSubCategoryStatistics()">
+    <mat-icon>analytics</mat-icon>
+    <span>View Sub Category Statistics</span>
+  </button>
+</mat-menu>
+<mat-menu #blogMenu="matMenu">
+  <button mat-menu-item (click)="viewSubCategory()">
+    <mat-icon>preview</mat-icon>
+    <span>View Sub Categories</span>
+  </button>
+  <button mat-menu-item (click)="createSubCategory()">
+    <mat-icon>add_circle</mat-icon>
+    <span>Create Sub Category</span>
+  </button>
+  <button mat-menu-item (click)="viewSubCategoryStatistics()">
+    <mat-icon>analytics</mat-icon>
+    <span>View Sub Category Statistics</span>
   </button>
 </mat-menu>

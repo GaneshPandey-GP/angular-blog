@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateCategoryComponent } from "../create-category/create-category.component";
+import { ViewCategoriesComponent } from "../view-categories/view-categories.component";
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-admin-head',
@@ -9,12 +11,12 @@ import { CreateCategoryComponent } from "../create-category/create-category.comp
 })
 export class AdminHeadComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
   }
   viewCategory(){
-
+    this._bottomSheet.open(ViewCategoriesComponent);
   }
   createCategory(){
     const dialogRef = this.dialog.open(CreateCategoryComponent);

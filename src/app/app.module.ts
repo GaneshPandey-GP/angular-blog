@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -23,6 +24,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatListModule} from '@angular/material/list';
 
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHeadComponent } from './admin-head/admin-head.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { ViewCategoriesComponent } from './view-categories/view-categories.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +43,13 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     HeaderComponent,
     AdminComponent,
     AdminHeadComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    ViewCategoriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FormsModule,
@@ -63,7 +70,10 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     MatDividerModule,
     MatDialogModule,
     MatRadioModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    MatBottomSheetModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

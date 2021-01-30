@@ -1,12 +1,17 @@
-<mat-accordion>
-  <mat-expansion-panel class="expansion-style" >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Categories
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-card (click)="viewCategory()">View Category</mat-card><mat-divider></mat-divider>
-    <mat-card (click)="createCategory()">Create Category</mat-card><mat-divider></mat-divider>
-    <mat-card (click)="viewCategoryStatistics()">View Category Statistics</mat-card><mat-divider></mat-divider>
-  </mat-expansion-panel>
-</mat-accordion>
+<button mat-card mat-raised-button color="primary" [matMenuTriggerFor]="categoryMenu" class="expansion-style" >
+  Category Options
+</button>
+<mat-menu #categoryMenu="matMenu">
+  <button mat-menu-item (click)="viewCategory()">
+    <mat-icon>dialpad</mat-icon>
+    <span>View Category</span>
+  </button>
+  <button mat-menu-item (click)="createCategory()">
+    <mat-icon>voicemail</mat-icon>
+    <span>Create Category</span>
+  </button>
+  <button mat-menu-item (click)="viewCategoryStatistics()">
+    <mat-icon>notifications_off</mat-icon>
+    <span>View Category Statistics</span>
+  </button>
+</mat-menu>

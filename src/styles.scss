@@ -3,23 +3,23 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.deeppurple-amber {
-  @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-}
-.indigo-pink {
-  @import '@angular/material/prebuilt-themes/indigo-pink.css';
-}
-.pink-bluegrey {
-  @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
-}
-.purple-green {
-  @import '@angular/material/prebuilt-themes/purple-green.css';
-}
+// .deeppurple-amber {
+//   @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// }
+// .indigo-pink {
+//   @import '@angular/material/prebuilt-themes/indigo-pink.css';
+// }
+// .pink-bluegrey {
+//   @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+// }
+// .purple-green {
+//   @import '@angular/material/prebuilt-themes/purple-green.css';
+// }
 @import '~@angular/material/theming';
 
 @include mat-core();
 
-$alternate-primary: mat-palette($mat-blue, 100);
+$alternate-primary: mat-palette($mat-blue);
 $alternate-accent: mat-palette($mat-green, 500);
 $alternate-warn: mat-palette($mat-red, 900);
 $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent, $alternate-warn);
@@ -39,3 +39,6 @@ $custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $cust
 .dark-theme {
   @include angular-material-theme($custom-theme);
 }
+$accent: mat-color($custom-theme-accent);
+$primary: mat-color($custom-theme-primary);
+$warn: mat-color($custom-theme-warn);

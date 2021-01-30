@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Create Category</h1>
+<form class="create-category-form">
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControl]="categoryNameControl" [errorStateMatcher]="matcher"
+           placeholder="Ex. New Technology">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="categoryNameControl.hasError('email') && !categoryNameControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="categoryNameControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">CLOSE</button>
+  <button mat-raised-button color="accent">CREATE</button>
+</div>

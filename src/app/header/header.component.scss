@@ -6,13 +6,20 @@
   justify-content: space-around;
 }
 .category{
-  background:#222; 
-  border: none; 
+  background:#222;
+  border: none;
 
   font-size:15px;
-  font-weight: 400; 
+  font-weight: 400;
   color: #ffff;
 }
 .category option{
   margin: 19px;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+.radio-button {
+  margin: 5px;
 }

@@ -3,23 +3,35 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.deeppurple-amber {
+  @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+}
+.indigo-pink {
+  @import '@angular/material/prebuilt-themes/indigo-pink.css';
+}
+.pink-bluegrey {
+  @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+}
+.purple-green {
+  @import '@angular/material/prebuilt-themes/purple-green.css';
+}
 @import '~@angular/material/theming';
 
 @include mat-core();
 
-$light-custom-theme-primary: mat-palette($mat-blue);
-$light-custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
-$light-custom-theme-warn: mat-palette($mat-red);
-$light-custom-theme: mat-light-theme($light-custom-theme-primary, $light-custom-theme-accent, $light-custom-theme-warn);
+$alternate-primary: mat-palette($mat-blue, 100);
+$alternate-accent: mat-palette($mat-green, 500);
+$alternate-warn: mat-palette($mat-red, 900);
+$alternate-theme: mat-light-theme($alternate-primary, $alternate-accent, $alternate-warn);
 
 .light-theme {
-  @include angular-material-theme($light-custom-theme);
+  @include angular-material-theme($alternate-theme);
 }
 
 
 
-$custom-theme-primary: mat-palette($mat-blue);
-$custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$custom-theme-primary: mat-palette($mat-purple);
+$custom-theme-accent: mat-palette($mat-green, A200, A100, A400);
 $custom-theme-warn: mat-palette($mat-red);
 $custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
 

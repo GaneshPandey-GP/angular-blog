@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,9 +43,10 @@ import { TrendingComponent } from './trending/trending.component';
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }    
+export class AppModule { }

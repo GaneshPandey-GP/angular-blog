@@ -37,6 +37,8 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { ViewCategoriesComponent } from './view-categories/view-categories.component';
 import { CreateSubcategoryComponent } from './create-subcategory/create-subcategory.component';
 import { ViewSubcategoryComponent } from './view-subcategory/view-subcategory.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { CreateBlogComponent } from './create-blog/create-blog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ViewSubcategoryComponent } from './view-subcategory/view-subcategory.co
     CreateCategoryComponent,
     ViewCategoriesComponent,
     CreateSubcategoryComponent,
-    ViewSubcategoryComponent
+    ViewSubcategoryComponent,
+    UpdateCategoryComponent,
+    CreateBlogComponent
   ],
   imports: [
     BrowserModule,

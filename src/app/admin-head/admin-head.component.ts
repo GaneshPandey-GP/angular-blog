@@ -40,5 +40,14 @@ export class AdminHeadComponent implements OnInit {
   viewSubCategoryStatistics(){
 
   }
+  viewBlogs(){
+
+  }
+  createBlog(){
+
+  }
+  viewBlogStatistics(){
+    
+  }
 
 }

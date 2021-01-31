@@ -35,24 +35,22 @@ export class CreateCategoryComponent {
   }
   createCategory() {
     if(this.createCategoryForm.value.name!=''){
-      // this.adminService
-      //   .createCategory(this.createCategoryForm.value.name)
-      //   .subscribe(
-      //     data => {
-      //       console.log('data ', data);
-      //       if(data.length == 0) {
-      //         throw new Error('Error Registering User... ');
-      //         this.openSnackBar("Error Registering User", "Close");
-      //       } else {
-      //         this.success(data);
-      //         this.openSnackBar("User Registered Successfully", "Close");
-      //         this.router.navigate(['/login']);
-      //       }
-      //     },
-      //     err => console.log(err)
-      //   );
-      this.openSnackBar("Category Created Successfully", "Close");
-      this.close();
+      this.adminService
+        .createCategory(this.createCategoryForm.value.name)
+        .subscribe(
+          data => {
+            console.log('data ', data);
+            if(data.length == 0) {
+              throw new Error('Error Creating Category... ');
+              this.openSnackBar("Error Creating Category...", "Close");
+            } else {
+              this.close();
+              this.openSnackBar("Category Created Successfully", "Close");
+            }
+          },
+          err => console.log(err)
+        );
+
     }
   }
   close(): void {

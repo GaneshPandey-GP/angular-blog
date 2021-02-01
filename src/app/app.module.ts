@@ -31,6 +31,7 @@ import {MatListModule} from '@angular/material/list';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { TrendingComponent } from './trending/trending.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHeadComponent } from './admin-head/admin-head.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
@@ -39,12 +40,14 @@ import { CreateSubcategoryComponent } from './create-subcategory/create-subcateg
 import { ViewSubcategoryComponent } from './view-subcategory/view-subcategory.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
+import { ViewBlogsComponent } from './view-blogs/view-blogs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     HeaderComponent,
+    TrendingComponent,
     AdminComponent,
     AdminHeadComponent,
     CreateCategoryComponent,
@@ -52,7 +55,8 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
     CreateSubcategoryComponent,
     ViewSubcategoryComponent,
     UpdateCategoryComponent,
-    CreateBlogComponent
+    CreateBlogComponent,
+    ViewBlogsComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +75,8 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
-    MatCarouselModule,
     MatCardModule,
+    MatCarouselModule,
     MatChipsModule,
     MatExpansionModule,
     MatDividerModule,

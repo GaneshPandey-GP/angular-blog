@@ -5,7 +5,7 @@ import { ViewCategoriesComponent } from "../view-categories/view-categories.comp
 import { CreateSubcategoryComponent } from "../create-subcategory/create-subcategory.component";
 import { ViewSubcategoryComponent } from "../view-subcategory/view-subcategory.component";
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
-
+import {ViewBlogsComponent} from "../view-blogs/view-blogs.component";
 @Component({
   selector: 'app-admin-head',
   templateUrl: './admin-head.component.html',
@@ -41,7 +41,7 @@ export class AdminHeadComponent implements OnInit {
 
   }
   viewBlogs(){
-
+    this._bottomSheet.open(ViewBlogsComponent);
   }
   createBlog(){
 

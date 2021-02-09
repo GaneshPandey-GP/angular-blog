@@ -32,6 +32,7 @@ export class AdminHeadComponent implements OnInit {
 
   }
   viewSubCategory(){
+    this._bottomSheet.open(ViewSubcategoryComponent);
 
   }
   createSubCategory(){

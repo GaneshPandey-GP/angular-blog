@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -65,6 +65,7 @@ import { ViewBlogsComponent } from './view-blogs/view-blogs.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     FormsModule,
+    EditorModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,

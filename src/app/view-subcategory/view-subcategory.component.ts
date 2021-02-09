@@ -8,8 +8,9 @@ import { AdminService } from '../admin-service/admin.service';
   styleUrls: ['./view-subcategory.component.scss']
 })
 export class ViewSubcategoryComponent implements OnInit {
-
   categories: any = [];
+  subCategories: any = [];
+  innerCats: any = [];
   constructor(private adminService:AdminService, private _bottomSheetRef: MatBottomSheetRef<ViewSubcategoryComponent>) { }
 
   openLink(event: MouseEvent): void {
@@ -17,7 +18,6 @@ export class ViewSubcategoryComponent implements OnInit {
     event.preventDefault();
   }
   panelOpenState = false;
-
 
   ngOnInit(): void {
     this.adminService
@@ -32,10 +32,19 @@ export class ViewSubcategoryComponent implements OnInit {
         },
         err => console.log(err)
       );
+      this.adminService.viewSubCategories('').subscribe(
+        data => {
+          if(data.length == 0) {
+            throw new Error("Error Fetching Subcategories");
+          } else {
+            this.subCategories = data;
+          }
+        },
+        err => console.log(err)
+      );
   }
 
-  getSubCategoryInfo() {
-    console.log("hi")
-    // this.adminService.viewSubCategories()
+  getSubCategoryInfo(categoryid: any) {
+    this.innerCats = (this.subCategories.filter((item) => item.categoryid === categoryid))
   }
 }

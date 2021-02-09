@@ -57,9 +57,9 @@ export class CreateSubcategoryComponent {
   submit() {
     console.log(this.subCategoryForm.value);
 
-    if(this.subCategoryForm.value.name!='' && this.subCategoryForm.value.category!=''){
+    if(this.subCategoryForm.value.subCategory!='' && this.subCategoryForm.value.category!=''){
       this.adminService
-        .createSubCategory(this.subCategoryForm.value.name, this.subCategoryForm.value.category.name, this.subCategoryForm.value.category.categoryid)
+        .createSubCategory(this.subCategoryForm.value.subCategory, this.subCategoryForm.value.category.name, this.subCategoryForm.value.category.categoryid)
         .subscribe(
           data => {
             console.log('data ', data);

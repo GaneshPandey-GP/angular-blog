@@ -6,6 +6,7 @@ import { CreateSubcategoryComponent } from "../create-subcategory/create-subcate
 import { ViewSubcategoryComponent } from "../view-subcategory/view-subcategory.component";
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {ViewBlogsComponent} from "../view-blogs/view-blogs.component";
+import { CreateBlogComponent } from '../create-blog/create-blog.component';
 @Component({
   selector: 'app-admin-head',
   templateUrl: './admin-head.component.html',
@@ -44,8 +45,9 @@ export class AdminHeadComponent implements OnInit {
   viewBlogs(){
     this._bottomSheet.open(ViewBlogsComponent);
   }
+  
   createBlog(){
-
+    const dialogRef = this.dialog.open(CreateBlogComponent);
   }
   viewBlogStatistics(){
     

@@ -35,6 +35,30 @@ export class AdminService {
       })
     );
   }
+
+  createSubCategory(name:any, category: any, categoryid: any){
+    return this.http.post<any>(this.createApiPath,{
+      database:"Blog",
+      collection:"subCategory",
+      sequenceType:"subCategorySequence",
+      idType:"subCategoryid",
+      document:{
+        name:name,
+        category: category,
+        categoryid: categoryid,
+        isActive:1,
+        isVisible:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
   viewCategories(){
     return this.http.post<any>(this.readApiPath,{
       database:"Blog",
@@ -52,4 +76,22 @@ export class AdminService {
       })
     );
   }
+  viewSubCategories(categoryid: any){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"subCategory",
+      Filter:{
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
 }

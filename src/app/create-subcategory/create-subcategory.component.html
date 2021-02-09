@@ -1,12 +1,10 @@
 <h1 mat-dialog-title>Create Category</h1>
-<form class="create-category-form" [formGroup]="createSubCategoryForm" (ngSubmit)="createSubCategory()">
+<form class="create-category-form" [formGroup]="subCategoryForm" (ngSubmit)="submit()">
   <mat-form-field class="full-width">
     <mat-label color="warn">Choose a Category (required)</mat-label>
     <mat-select formControlName="category" required>
       <mat-option label="--select category --">--select category --</mat-option>
-      <mat-option value="option1">Option 1</mat-option>
-      <mat-option value="option2">Option 2</mat-option>
-      <mat-option value="option3">Option 3</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
   </mat-select>
   <mat-error *ngIf="selectFormControl.hasError('required')">
     This category is required
@@ -15,7 +13,7 @@
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Name</mat-label>
-    <input type="text" matInput [formControl]="categoryNameControl" [errorStateMatcher]="matcher" placeholder="Example:- Laptop" formControlName="name">
+    <input type="text" matInput [formControl]="categoryNameControl" [errorStateMatcher]="matcher" placeholder="Example:- Laptop" formControlName="subCategory">
     <mat-hint color="accent">Enter a Sub-Category Name</mat-hint>
     <mat-error *ngIf="categoryNameControl.hasError('required')">
       Name is <strong>required</strong>

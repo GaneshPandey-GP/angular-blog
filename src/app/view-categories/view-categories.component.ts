@@ -8,7 +8,7 @@ import { AdminService } from "src/app/admin-service/admin.service";
   styleUrls: ['./view-categories.component.scss']
 })
 export class ViewCategoriesComponent {
-  categories:any;
+  categories:any = [];
   constructor(private adminService:AdminService, private _bottomSheetRef: MatBottomSheetRef<ViewCategoriesComponent>) { }
 
   openLink(event: MouseEvent): void {

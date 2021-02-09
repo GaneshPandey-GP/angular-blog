@@ -1,0 +1,41 @@
+.example-card {
+    max-width: 1200px;
+    border: none;
+    // margin-left:1000px ;
+    background-color: #f1f1f1;
+    color: #222;
+
+    justify-content: space-around;
+  }
+
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .content{
+      margin-bottom:12px ;
+  }
+  .content img{
+      padding:12px ;
+      background-size: cover;
+  }
+  .content .data{
+      margin-left:10px ;
+  }
+  .example-card mat-card{
+      color: #222;
+      background: transparent;
+      border:none;
+      margin-bottom:5px ;
+  }
+  mat-card-actions{
+      font-size: 10px;
+  }
+  .example-card mat-card-header{
+      text-align: center;
+      color: #181515;
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #222;
+  }

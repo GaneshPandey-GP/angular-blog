@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 import { AdminService } from '../admin-service/admin.service';
 
 @Component({
@@ -16,10 +17,12 @@ export class CreateBlogComponent implements OnInit {
   createBlogForm = new FormGroup({
     category: new FormControl(''),
     subCategory: new FormControl(''),
+    categoryid: new FormControl(''),
+    subCategoryid: new FormControl(''),
     content: new FormControl('')
   })
 
-  constructor(private adminService:AdminService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateBlogComponent>){}
+  constructor(private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateBlogComponent>){}
 
   data:any={};
   success(res:any){
@@ -49,19 +52,31 @@ export class CreateBlogComponent implements OnInit {
   selectFormControl = new FormControl('', Validators.required);
 
   getSubCategory(event: any) {
+    this.adminService
+      .viewSubCategories(event.value.categoryid)
+      .subscribe(
+        data => {
+          console.log(data)
+          if(data.length == 0) {
+            throw new Error('Error Fetching Categories... ');
+          } else {
+            this.subCategories=data;
+          }
+        },
+        err => console.log(err)
+      );
+  }
+
+  openEditor(){
+    const dialogRef = this.dialog.open(EditorComponent);
+  }
+
+  getFormData(event: any) {
     console.log(event)
-    // this.adminService
-    //   .viewSubCategories(categoryid)
-    //   .subscribe(
-    //     data => {
-    //       if(data.length == 0) {
-    //         throw new Error('Error Fetching Categories... ');
-    //       } else {
-    //         this.subCategories=data;
-    //       }
-    //     },
-    //     err => console.log(err)
-    //   );
+    this.createBlogForm.value.category = event.value.category
+    this.createBlogForm.value.categoryid = event.value.categoryid
+    this.createBlogForm.value.subCategory = event.value.subCategory
+    this.createBlogForm.value.subCategoryid = event.value.subCategoryid
   }
   submit() {
     console.log(this.createBlogForm.value)

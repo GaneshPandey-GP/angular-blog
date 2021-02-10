@@ -81,6 +81,7 @@ export class AdminService {
       database:"Blog",
       collection:"subCategory",
       Filter:{
+        categoryid: categoryid,
         isActive:1
       }
     })

@@ -36,12 +36,15 @@ export class AdminHeadComponent implements OnInit {
     this._bottomSheet.open(ViewSubcategoryComponent);
 
   }
+  
   createSubCategory(){
     const dialogRef = this.dialog.open(CreateSubcategoryComponent);
   }
+
   viewSubCategoryStatistics(){
 
   }
+
   viewBlogs(){
     this._bottomSheet.open(ViewBlogsComponent);
   }

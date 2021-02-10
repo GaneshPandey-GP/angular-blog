@@ -59,6 +59,34 @@ export class AdminService {
       })
     );
   }
+
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+    return this.http.post<any>(this.createApiPath,{
+      database:"Blog",
+      collection:"blog",
+      sequenceType:"blogSequence",
+      idType:"blogid",
+      document:{
+        category: category,
+        categoryid: categoryid,
+        subCategory: subCategory,
+        subCategoryid: subCategoryid,
+        title: title,
+        content: content,
+        isActive:1,
+        isVisible:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
   viewCategories(){
     return this.http.post<any>(this.readApiPath,{
       database:"Blog",
@@ -82,6 +110,24 @@ export class AdminService {
       collection:"subCategory",
       Filter:{
         categoryid: categoryid,
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  viewBlogs(){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
         isActive:1
       }
     })

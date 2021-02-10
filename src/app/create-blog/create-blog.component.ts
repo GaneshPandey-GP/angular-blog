@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EditorComponent } from '@tinymce/tinymce-angular';
 import { AdminService } from '../admin-service/admin.service';
 
 @Component({
@@ -19,6 +18,7 @@ export class CreateBlogComponent implements OnInit {
     subCategory: new FormControl(''),
     categoryid: new FormControl(''),
     subCategoryid: new FormControl(''),
+    title: new FormControl(''),
     content: new FormControl('')
   })
 
@@ -29,7 +29,7 @@ export class CreateBlogComponent implements OnInit {
     this.data=res;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.adminService
       .viewCategories()
       .subscribe(
@@ -49,6 +49,8 @@ export class CreateBlogComponent implements OnInit {
       duration: 5000,
     });
   }
+
+
   selectFormControl = new FormControl('', Validators.required);
 
   getSubCategory(event: any) {
@@ -67,18 +69,22 @@ export class CreateBlogComponent implements OnInit {
       );
   }
 
-  openEditor(){
-    const dialogRef = this.dialog.open(EditorComponent);
-  }
 
-  getFormData(event: any) {
-    console.log(event)
-    this.createBlogForm.value.category = event.value.category
-    this.createBlogForm.value.categoryid = event.value.categoryid
-    this.createBlogForm.value.subCategory = event.value.subCategory
-    this.createBlogForm.value.subCategoryid = event.value.subCategoryid
-  }
   submit() {
-    console.log(this.createBlogForm.value)
+    this.adminService
+      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.content)
+      .subscribe(
+        data => {
+          console.log('data ', data);
+          if(data.status == 1) {
+            this.success(data);
+            this.openSnackBar("Blog Created Successfully", "Close");
+          } else {
+            throw new Error('Error Creating Blog... ');
+            this.openSnackBar("Error Creating Blog", "Close");
+          }
+        },
+        err => console.log(err)
+      );
   }
 }

@@ -1,4 +1,6 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin-service/admin.service';
 
 @Component({
   selector: 'app-view-blogs',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBlogsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminService:AdminService) { }
+  blogs: any = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.adminService.viewBlogs()
+    .subscribe(
+      data => {
+        console.log(data)
+        if(data.length == 0) {
+          throw new Error('Error Fetching Blogs... ');
+        } else {
+          this.blogs=data;
+        }
+      },
+      err => console.log(err)
+    );
   }
 
 }

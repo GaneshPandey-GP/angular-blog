@@ -23,9 +23,8 @@
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
     "@ngmodule/material-carousel": "^0.6.0",
-    "@tinymce/tinymce-angular": "^4.2.0",
+    "angular-froala-wysiwyg": "^3.2.6-1",
     "rxjs": "~6.6.0",
-    "tinymce": "^5.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

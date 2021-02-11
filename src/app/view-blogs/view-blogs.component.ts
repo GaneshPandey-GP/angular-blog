@@ -1,6 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from '../admin-service/admin.service';
+import { CreateBlogComponent } from '../create-blog/create-blog.component';
+import { UpdateBlogComponent } from '../update-blog/update-blog.component';
 
 @Component({
   selector: 'app-view-blogs',
@@ -9,14 +12,13 @@ import { AdminService } from '../admin-service/admin.service';
 })
 export class ViewBlogsComponent implements OnInit {
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService, public dialog: MatDialog) { }
   blogs: any = [];
 
   ngOnInit() {
     this.adminService.viewBlogs()
     .subscribe(
       data => {
-        console.log(data)
         if(data.length == 0) {
           throw new Error('Error Fetching Blogs... ');
         } else {
@@ -25,6 +27,16 @@ export class ViewBlogsComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  editBlog(blog: any) {
+    const dialogRef = this.dialog.open(UpdateBlogComponent, {
+      data: {blogInfo: blog},
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

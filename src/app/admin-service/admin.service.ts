@@ -23,7 +23,7 @@ export class AdminService {
       document:{
         name:name,
         isActive:1,
-        isVisible:1
+        isVisible:true
       }
     })
     .pipe(
@@ -47,7 +47,7 @@ export class AdminService {
         category: category,
         categoryid: categoryid,
         isActive:1,
-        isVisible:1
+        isVisible:true
       }
     })
     .pipe(
@@ -74,7 +74,7 @@ export class AdminService {
         title: title,
         content: content,
         isActive:1,
-        isVisible:1
+        isVisible:true
       }
     })
     .pipe(
@@ -141,4 +141,30 @@ export class AdminService {
     );
   }
 
+  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+    return this.http.post<any>(this.updateApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
+        blogid: blogid
+      },
+      DataToBeUpdated: {
+        category: category,
+        categoryid: categoryid,
+        subCategory: subCategory,
+        subCategoryid: subCategoryid,
+        title: title,
+        content: content,
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+        this.viewBlogs()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
 }

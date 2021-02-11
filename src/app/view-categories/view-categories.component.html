@@ -1,6 +1,21 @@
 <mat-nav-list>
-  <a mat-list-item *ngFor="let item of categories">
-    <span mat-line>Name:- {{item.name}}</span>
-    <span mat-line>Visiblity:- {{item.isVisible}}</span>
-  </a>
+  <mat-list-item *ngFor="let item of categories">
+    <span mat-line>{{item.name}}</span>
+      <mat-icon mat-icon-button class="margin">edit</mat-icon>
+      <mat-icon mat-icon-button class="margin">delete</mat-icon>
+      <section class="section">
+        <mat-slide-toggle *ngIf ="item.isVisible"
+            class="margin"
+            [color]="color"
+            [checked]="unChecked"
+            >
+        </mat-slide-toggle>
+        <mat-slide-toggle *ngIf ="!item.isVisible"
+        class="margin"
+        [color]="color"
+        [checked]="checked"
+        >
+    </mat-slide-toggle>
+      </section> 
+  </mat-list-item>
 </mat-nav-list>

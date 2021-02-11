@@ -49,9 +49,14 @@ export class AdminHeadComponent implements OnInit {
     this._bottomSheet.open(ViewBlogsComponent);
   }
   
-  createBlog(){
+  createBlog() {
     const dialogRef = this.dialog.open(CreateBlogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
   viewBlogStatistics(){
     
   }

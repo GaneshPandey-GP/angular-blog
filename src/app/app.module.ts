@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -27,7 +26,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {MatTreeModule} from '@angular/material/tree';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -42,6 +42,7 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { ViewBlogsComponent } from './view-blogs/view-blogs.component';
 import { EditorComponent } from './editor/editor.component';
+import { UpdateBlogComponent } from './update-blog/update-blog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { EditorComponent } from './editor/editor.component';
     UpdateCategoryComponent,
     CreateBlogComponent,
     ViewBlogsComponent,
-    EditorComponent
+    EditorComponent,
+    UpdateBlogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,11 +69,12 @@ import { EditorComponent } from './editor/editor.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     FormsModule,
-    EditorModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     MatGridListModule,
     MatSlideToggleModule,
     FlexLayoutModule,
@@ -88,7 +91,8 @@ import { EditorComponent } from './editor/editor.component';
     MatInputModule,
     MatSnackBarModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

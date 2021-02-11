@@ -1,28 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../admin-service/admin.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Inject} from '@angular/core';
 
 @Component({
-  selector: 'app-create-blog',
-  templateUrl: './create-blog.component.html',
-  styleUrls: ['./create-blog.component.scss']
+  selector: 'app-update-blog',
+  templateUrl: './update-blog.component.html',
+  styleUrls: ['./update-blog.component.scss']
 })
-export class CreateBlogComponent implements OnInit {
+export class UpdateBlogComponent implements OnInit {
   categories: any = []
   subCategories: any = []
 
-  createBlogForm = new FormGroup({
-    category: new FormControl(''),
-    subCategory: new FormControl(''),
-    categoryid: new FormControl(''),
-    subCategoryid: new FormControl(''),
-    title: new FormControl(''),
-    content: new FormControl('')
-  })
+  updateBlogForm:  FormGroup
 
-  constructor(private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateBlogComponent>){}
+  constructor(@Inject(MAT_DIALOG_DATA) public blogInfo: any, private formBuilder: FormBuilder, private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<UpdateBlogComponent>){}
 
   data:any={};
   success(res:any){
@@ -30,6 +25,7 @@ export class CreateBlogComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.adminService
       .viewCategories()
       .subscribe(
@@ -42,6 +38,15 @@ export class CreateBlogComponent implements OnInit {
         },
         err => console.log(err)
       );
+      
+      this.updateBlogForm = this.formBuilder.group({
+      category: this.blogInfo.blogInfo.category,
+      subCategory: this.blogInfo.blogInfo.subCategory,
+      categoryid: this.blogInfo.blogInfo.categoryid,
+      subCategoryid: this.blogInfo.blogInfo.subCategoryid,
+      title: this.blogInfo.blogInfo.title,
+      content: this.blogInfo.blogInfo.content
+    });
   }
 
   openSnackBar(message: string, action: string) {
@@ -71,17 +76,18 @@ export class CreateBlogComponent implements OnInit {
 
 
   submit() {
+    console.log(this.updateBlogForm.value)
     this.adminService
-      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.content)
+      .updateBlog(this.blogInfo.blogInfo.blogid, this.updateBlogForm.value.subCategory.category, this.updateBlogForm.value.subCategory.categoryid, this.updateBlogForm.value.subCategory.name, this.updateBlogForm.value.subCategory.subCategoryid, this.updateBlogForm.value.title, this.updateBlogForm.value.content)
       .subscribe(
         data => {
           console.log('data ', data);
           if(data.status == 1) {
             this.success(data);
-            this.openSnackBar("Blog Created Successfully", "Close");
+            this.openSnackBar("Blog Updated Successfully", "Close");
           } else {
             throw new Error('Error Creating Blog... ');
-            this.openSnackBar("Error Creating Blog", "Close");
+            this.openSnackBar("Error Updating Blog", "Close");
           }
         },
         err => console.log(err)

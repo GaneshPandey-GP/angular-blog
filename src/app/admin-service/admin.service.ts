@@ -23,7 +23,7 @@ export class AdminService {
       document:{
         name:name,
         isActive:1,
-        isVisible:1
+        isVisible:true
       }
     })
     .pipe(
@@ -47,7 +47,7 @@ export class AdminService {
         category: category,
         categoryid: categoryid,
         isActive:1,
-        isVisible:1
+        isVisible:true
       }
     })
     .pipe(
@@ -59,6 +59,34 @@ export class AdminService {
       })
     );
   }
+
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+    return this.http.post<any>(this.createApiPath,{
+      database:"Blog",
+      collection:"blog",
+      sequenceType:"blogSequence",
+      idType:"blogid",
+      document:{
+        category: category,
+        categoryid: categoryid,
+        subCategory: subCategory,
+        subCategoryid: subCategoryid,
+        title: title,
+        content: content,
+        isActive:1,
+        isVisible:true
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
   viewCategories(){
     return this.http.post<any>(this.readApiPath,{
       database:"Blog",
@@ -95,4 +123,48 @@ export class AdminService {
     );
   }
 
+  viewBlogs(){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+    return this.http.post<any>(this.updateApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
+        blogid: blogid
+      },
+      DataToBeUpdated: {
+        category: category,
+        categoryid: categoryid,
+        subCategory: subCategory,
+        subCategoryid: subCategoryid,
+        title: title,
+        content: content,
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+        this.viewBlogs()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
 }

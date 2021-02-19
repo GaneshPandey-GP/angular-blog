@@ -1,1 +1,15 @@
-<p>update-category works!</p>
+<h1 mat-dialog-title>Update Category</h1>
+<form class="update-category-form" [formGroup]="updateCategoryForm" (ngSubmit)="updateCategory()">
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControl]="categoryNameControl" [errorStateMatcher]="matcher" placeholder="Example:- New Technology" formControlName="name">
+    <mat-hint color="accent">Enter a Category Name</mat-hint>
+    <mat-error *ngIf="categoryNameControl.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">CLOSE</button>
+  <button mat-raised-button color="accent" type="submit">SAVE</button>
+</div>
+</form>

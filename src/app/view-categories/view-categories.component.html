@@ -1,7 +1,7 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let item of categories">
     <span mat-line>{{item.name}}</span>
-      <mat-icon mat-icon-button class="margin">edit</mat-icon>
+      <mat-icon mat-icon-button class="margin" (click)="updateCategoryDialog(item)">edit</mat-icon>
       <mat-icon mat-icon-button class="margin">delete</mat-icon>
       <section class="section">
         <mat-slide-toggle *ngIf ="item.isVisible"

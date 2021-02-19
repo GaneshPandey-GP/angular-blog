@@ -40,13 +40,14 @@ export class UpdateBlogComponent implements OnInit {
       );
       
       this.updateBlogForm = this.formBuilder.group({
-      category: this.blogInfo.blogInfo.category,
-      subCategory: this.blogInfo.blogInfo.subCategory,
-      categoryid: this.blogInfo.blogInfo.categoryid,
-      subCategoryid: this.blogInfo.blogInfo.subCategoryid,
-      title: this.blogInfo.blogInfo.title,
-      content: this.blogInfo.blogInfo.content
-    });
+        category: this.blogInfo.blogInfo.category,
+        subCategory: this.blogInfo.blogInfo.subCategory,
+        categoryid: this.blogInfo.blogInfo.categoryid,
+        subCategoryid: this.blogInfo.blogInfo.subCategoryid,
+        title: this.blogInfo.blogInfo.title,
+        content: this.blogInfo.blogInfo.content,
+        thumbnail: this.blogInfo.blogInfo.thumbnail
+      });
   }
 
   openSnackBar(message: string, action: string) {
@@ -54,7 +55,6 @@ export class UpdateBlogComponent implements OnInit {
       duration: 5000,
     });
   }
-
 
   selectFormControl = new FormControl('', Validators.required);
 
@@ -74,11 +74,24 @@ export class UpdateBlogComponent implements OnInit {
       );
   }
 
+  handleImgChange = (event: any) => {
+    let file = event.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload =  () => 
+     this.updateBlogForm.patchValue({
+       thumbnail: reader.result
+     })
+,
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ };
 
   submit() {
     console.log(this.updateBlogForm.value)
     this.adminService
-      .updateBlog(this.blogInfo.blogInfo.blogid, this.updateBlogForm.value.subCategory.category, this.updateBlogForm.value.subCategory.categoryid, this.updateBlogForm.value.subCategory.name, this.updateBlogForm.value.subCategory.subCategoryid, this.updateBlogForm.value.title, this.updateBlogForm.value.content)
+      .updateBlog(this.blogInfo.blogInfo.blogid, this.updateBlogForm.value.subCategory.category, this.updateBlogForm.value.subCategory.categoryid, this.updateBlogForm.value.subCategory.name, this.updateBlogForm.value.subCategory.subCategoryid, this.updateBlogForm.value.title, this.updateBlogForm.value.content, this.updateBlogForm.value.thumbnail)
       .subscribe(
         data => {
           console.log('data ', data);

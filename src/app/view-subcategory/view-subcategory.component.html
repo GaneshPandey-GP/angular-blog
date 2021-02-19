@@ -1,16 +1,14 @@
 <mat-accordion *ngFor="let item of categories" >
     <mat-expansion-panel (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false" mat-raised-button (click)="getSubCategoryInfo(item.categoryid)">
+                            (closed)="panelOpenState = false" mat-raised-button>
         <mat-expansion-panel-header >
                 <mat-panel-title color="primary">
                     {{item.name}}
                 </mat-panel-title>
-            <mat-panel-description>
-                Visiblity:- {{item.isVisible}}
-            </mat-panel-description>
         </mat-expansion-panel-header>
-        <p *ngFor="let item of innerCats">
-            {{item.name}}
+        <p *ngFor="let subItem of subCategories[item.name]">
+            {{subItem.name}}
+            {{item.categoryid}}
         </p>
     </mat-expansion-panel>
 </mat-accordion>

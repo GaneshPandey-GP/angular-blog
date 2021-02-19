@@ -5,13 +5,17 @@ import { AdminService } from '../admin-service/admin.service';
 @Component({
   selector: 'app-view-subcategory',
   templateUrl: './view-subcategory.component.html',
-  styleUrls: ['./view-subcategory.component.scss']
+  styleUrls: ['./view-subcategory.component.scss'],
 })
 export class ViewSubcategoryComponent implements OnInit {
   categories: any = [];
   subCategories: any = [];
   innerCats: any = [];
-  constructor(private adminService:AdminService, private _bottomSheetRef: MatBottomSheetRef<ViewSubcategoryComponent>) { }
+  i: any = 0;
+  constructor(
+    private adminService: AdminService,
+    private _bottomSheetRef: MatBottomSheetRef<ViewSubcategoryComponent>
+  ) {}
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
@@ -20,31 +24,32 @@ export class ViewSubcategoryComponent implements OnInit {
   panelOpenState = false;
 
   ngOnInit(): void {
-    this.adminService
-      .viewCategories()
-      .subscribe(
-        data => {
-          if(data.length == 0) {
-            throw new Error('Error Fetching Categories... ');
-          } else {
-            this.categories=data;
+    this.adminService.viewCategories().subscribe(
+      (data) => {
+        if (data.length == 0) {
+          throw new Error('Error Fetching Categories... ');
+        } else {
+          this.categories = data;
+          for (var item of this.categories) {
+            console.log(item);
+
+            this.adminService.viewSubCategories(item.categoryid).subscribe(
+              (data) => {
+                  this.subCategories[item.name] = data;
+                  console.log(this.subCategories[item.name]);
+              },
+              (err) => console.log(err)
+            );
           }
-        },
-        err => console.log(err)
-      );
-      this.adminService.viewSubCategories('').subscribe(
-        data => {
-          if(data.length == 0) {
-            throw new Error("Error Fetching Subcategories");
-          } else {
-            this.subCategories = data;
-          }
-        },
-        err => console.log(err)
-      );
+        }
+      },
+      (err) => console.log(err)
+    );
   }
 
   getSubCategoryInfo(categoryid: any) {
-    this.innerCats = (this.subCategories.filter((item) => item.categoryid === categoryid))
+    this.innerCats = this.subCategories.filter(
+      (item) => item.categoryid === categoryid
+    );
   }
 }

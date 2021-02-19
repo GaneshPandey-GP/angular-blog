@@ -60,7 +60,7 @@ export class AdminService {
     );
   }
 
-  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
       collection:"blog",
@@ -73,6 +73,7 @@ export class AdminService {
         subCategoryid: subCategoryid,
         title: title,
         content: content,
+        thumbnail: thumbnail,
         isActive:1,
         isVisible:true
       }
@@ -141,7 +142,7 @@ export class AdminService {
     );
   }
 
-  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any){
+  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
     return this.http.post<any>(this.updateApiPath,{
       database:"Blog",
       collection:"blog",
@@ -155,12 +156,57 @@ export class AdminService {
         subCategoryid: subCategoryid,
         title: title,
         content: content,
+        thumbnail: thumbnail
       }
     })
     .pipe(
       map((res: any) => {
         return res;
         this.viewBlogs()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  updateCategory(categoryid: any, name: any){
+    return this.http.post<any>(this.updateApiPath,{
+      database:"Blog",
+      collection:"category",
+      Filter:{
+        categoryid: categoryid
+      },
+      DataToBeUpdated: {
+        name: name,
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+        this.viewCategories()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  updateSubCategory(subCategoryid: any, name: any){
+    return this.http.post<any>(this.updateApiPath,{
+      database:"Blog",
+      collection:"category",
+      Filter:{
+        subCategoryid: subCategoryid
+      },
+      DataToBeUpdated: {
+        name: name,
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+        this.viewSubCategories('')
       }),
       catchError((err) => {
         return err;

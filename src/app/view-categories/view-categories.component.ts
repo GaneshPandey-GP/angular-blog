@@ -1,6 +1,8 @@
 import { Component,  } from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from "src/app/admin-service/admin.service";
+import { UpdateCategoryComponent } from '../update-category/update-category.component';
 
 @Component({
   selector: 'app-view-categories',
@@ -9,7 +11,7 @@ import { AdminService } from "src/app/admin-service/admin.service";
 })
 export class ViewCategoriesComponent {
   categories:any = [];
-  constructor(private adminService:AdminService, private _bottomSheetRef: MatBottomSheetRef<ViewCategoriesComponent>) { }
+  constructor(private adminService:AdminService, public dialog: MatDialog, private _bottomSheetRef: MatBottomSheetRef<ViewCategoriesComponent>) { }
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
@@ -28,5 +30,10 @@ export class ViewCategoriesComponent {
         },
         err => console.log(err)
       );
+  }
+  updateCategoryDialog(category: any){
+    const dialogRef = this.dialog.open(UpdateCategoryComponent, {
+      data: {categoryInfo: category},
+    });
   }
 }

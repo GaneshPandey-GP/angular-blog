@@ -16,9 +16,8 @@ export class CreateBlogComponent implements OnInit {
   createBlogForm = new FormGroup({
     category: new FormControl(''),
     subCategory: new FormControl(''),
-    categoryid: new FormControl(''),
-    subCategoryid: new FormControl(''),
     title: new FormControl(''),
+    thumbnail: new FormControl(''),
     content: new FormControl('')
   })
 
@@ -70,9 +69,23 @@ export class CreateBlogComponent implements OnInit {
   }
 
 
+  handleImgChange = (event: any) => {
+     let file = event.files[0];
+     let reader = new FileReader();
+     reader.readAsDataURL(file);
+     reader.onload =  () => 
+      this.createBlogForm.patchValue({
+        thumbnail: reader.result
+      })
+,
+     reader.onerror = function (error) {
+       console.log('Error: ', error);
+     };
+  };
+
   submit() {
     this.adminService
-      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.content)
+      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.content, this.createBlogForm.value.thumbnail)
       .subscribe(
         data => {
           console.log('data ', data);

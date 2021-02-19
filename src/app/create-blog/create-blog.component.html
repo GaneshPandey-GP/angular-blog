@@ -5,7 +5,7 @@
   <mat-form-field class="full-width">
     <mat-label color="warn">Choose a Category (required)</mat-label>
     <mat-select formControlName="category" required (selectionChange)="getSubCategory($event)">
-      <mat-option label="--select category --">--select category --</mat-option>
+      <mat-option label="--select category--">--select category --</mat-option>
       <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
   </mat-select>
   <mat-error *ngIf="selectFormControl.hasError('required')">
@@ -15,8 +15,8 @@
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label color="warn">Choose a sub category (required)</mat-label>
-    <mat-select formControlName="subCategory" required >
-      <mat-option label="--select category --">--select sub category --</mat-option>
+    <mat-select formControlName="subCategory" required>
+      <mat-option label="--select category--">--select sub category --</mat-option>
       <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">{{subCategory.name}}</mat-option>
   </mat-select>
   <mat-error *ngIf="selectFormControl.hasError('required')">
@@ -28,6 +28,20 @@
     <mat-label>Title of the blog</mat-label>
     <textarea matInput placeholder="Enter the title of the blog..." formControlName="title" required></textarea>
   </mat-form-field>
+    <mat-label>Thumbnail of the blog</mat-label>
+    <br/>
+    <input
+      #thumbnail
+      type="file"
+      (change) ="handleImgChange(thumbnail)"
+      style="margin: 0.3rem;"
+    />
+    <img *ngIf="thumbnail"
+      matPrefix 
+      [src]="thumbnail"
+      alt="image"
+      style="height: 300px; width:500px"
+    />
   <textarea  formControlName="content" [froalaEditor]>Start writing your blog!</textarea >
 </mat-dialog-content>
 <div mat-dialog-actions align="end">

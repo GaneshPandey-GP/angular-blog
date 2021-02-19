@@ -1,5 +1,6 @@
 from flask import Flask, request, json, Response, jsonify
 from pymongo import MongoClient
+from flask_cors import CORS, cross_origin
 class MongoAPI:
     def __init__(self, data):
         self.client = MongoClient("mongodb://blog:impossible@52.237.72.43:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false")
@@ -38,6 +39,7 @@ class MongoAPI:
         output = [{item: data[item] for item in data if item != '_id'} for data in documents]
         return output
 app = Flask(__name__)
+cors = CORS(app)
 @app.route('/',methods=['GET'])
 def index():
     return("API Server Running")
@@ -105,6 +107,6 @@ if __name__ == '__main__':
     data={}
     app.run(use_reloader=False, debug=True, port=5001, host='127.0.0.1')
     #from gevent.pywsgi import WSGIServer
-    #app.debug = True 
+    #app.debug = True
     #http_server = WSGIServer(('', 5001), app)
     #http_server.serve_forever()

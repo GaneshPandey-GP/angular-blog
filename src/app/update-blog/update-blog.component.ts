@@ -15,15 +15,17 @@ export class UpdateBlogComponent implements OnInit {
   categories: any = []
   subCategories: any = []
 
-  updateBlogForm:  FormGroup
-
+  updateBlogForm:  FormGroup;
+  fetchedThumbnail: any;
   constructor(@Inject(MAT_DIALOG_DATA) public blogInfo: any, private formBuilder: FormBuilder, private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<UpdateBlogComponent>){}
 
   data:any={};
   success(res:any){
     this.data=res;
   }
-
+  view(item:any){
+    return(item)
+  }
   ngOnInit() {
 
     this.adminService
@@ -38,7 +40,7 @@ export class UpdateBlogComponent implements OnInit {
         },
         err => console.log(err)
       );
-      
+      this.fetchedThumbnail=this.blogInfo.blogInfo.thumbnail;
       this.updateBlogForm = this.formBuilder.group({
         category: this.blogInfo.blogInfo.category,
         subCategory: this.blogInfo.blogInfo.subCategory,
@@ -78,10 +80,11 @@ export class UpdateBlogComponent implements OnInit {
     let file = event.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload =  () => 
+    reader.onload =  () =>
      this.updateBlogForm.patchValue({
        thumbnail: reader.result
      })
+
 ,
     reader.onerror = function (error) {
       console.log('Error: ', error);

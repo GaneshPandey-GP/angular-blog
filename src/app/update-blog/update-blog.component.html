@@ -37,8 +37,8 @@
     style="margin: 0.3rem;"
   />
   <img *ngIf="thumbnail"
-    matPrefix 
-    [src]="thumbnail"
+    matPrefix
+    src={{view(fetchedThumbnail)}}
     alt="image"
     style="height: 300px; width:500px"
   />

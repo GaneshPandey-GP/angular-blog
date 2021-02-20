@@ -43,6 +43,7 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { ViewBlogsComponent } from './view-blogs/view-blogs.component';
 import { EditorComponent } from './editor/editor.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { UpdateBlogComponent } from './update-blog/update-blog.component';
     CreateBlogComponent,
     ViewBlogsComponent,
     EditorComponent,
-    UpdateBlogComponent
+    UpdateBlogComponent,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,

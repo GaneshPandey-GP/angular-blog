@@ -44,6 +44,8 @@ import { ViewBlogsComponent } from './view-blogs/view-blogs.component';
 import { EditorComponent } from './editor/editor.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     ViewBlogsComponent,
     EditorComponent,
     UpdateBlogComponent,
-    BlogsComponent
+    BlogsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     MatSnackBarModule,
     MatBottomSheetModule,
     MatListModule,
-    MatTreeModule
+    MatTreeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

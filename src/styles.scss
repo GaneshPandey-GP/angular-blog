@@ -42,3 +42,6 @@ $custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $cust
 $accent: mat-color($custom-theme-accent);
 $primary: mat-color($custom-theme-primary);
 $warn: mat-color($custom-theme-warn);
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,10 +1,30 @@
-<mat-grid-list [cols]="breakpoint" rowHeight="1:1" (window:resize)="onResize($event)" [gutterSize]="'20px'">
-    <mat-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        hskahdkjhs
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="mt-5" *ngFor="let blog of blogs">
+  <div class="row">
+    <div class="col-12">
+      <article class="blog-card">
+        <div class="blog-card__background">
+          <div class="card__background--wrapper">
+            <div class="card__background--main" style="background-image: url({{blog.thumbnail}});">
+              <div class="card__background--layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card__head">
+          <span class="date__box">
+            <span class="date__day">11</span>
+            <span class="date__month">JAN</span>
+          </span>
+        </div>
+        <div class="blog-card__info">
+          <h5 class="lead">{{blog.title}}</h5>
+          <p>
+            <a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Shivalik College</a>
+            <a href="#" class="icon-link"><i class="fa fa-comments-o"></i> 150</a>
+          </p>
+          <p>{{blog.content.substring(0, 250)}}...</p>
+          <a href="#" class="btn btn--with-icon"><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

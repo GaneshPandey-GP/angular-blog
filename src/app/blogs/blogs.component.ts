@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin-service/admin.service';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import { parse } from 'angular-html-parser';
 
 @Component({
   selector: 'app-blogs',
@@ -13,23 +9,27 @@ export interface Tile {
   styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent implements OnInit {
-  breakpoint: number = 0;
-  rowHeight:any;
-  constructor() { }
 
-  ngOnInit(): void {
-    this.breakpoint = window.innerWidth <= 400 ? 2 : window.innerWidth <= 700 ? 4 : window.innerWidth <= 1000 ? 4 : window.innerWidth >= 1000 ? 8 : 2;
-    this.rowHeight =window.innerWidth <= 789 ? 1 : 2;
+  constructor(private adminService:AdminService) { }
+  blogs: any = [];
+
+  ngOnInit() {
+    this.adminService.viewBlogs()
+    .subscribe(
+      data => {
+        if(data.length == 0) {
+          throw new Error('Error Fetching Blogs... ');
+        } else {
+          this.blogs=data;
+        }
+      },
+      err => console.log(err)
+    );
   }
-
-  onResize(event: any) {
-    this.breakpoint = window.innerWidth <= 400 ? 2 : window.innerWidth <= 700 ? 4 : window.innerWidth <= 1000 ? 4 : window.innerWidth >= 1000 ? 8 : 2;
-    this.rowHeight = event.target.innerWidth <= 789 ? 1 : 2;
+  getParsed() {
+    
   }
+  
 
-  tiles: Tile[] = [
-    {text: 'Two', cols: 4, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 4, rows: 1, color: 'lightpink'},
-  ];
 
 }

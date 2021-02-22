@@ -1,58 +1,47 @@
-<mat-carousel
-  timings="250ms ease-in"
-  [autoplay]="true"
-  interval="5000"
-  color="accent"
-  maxWidth="auto"
-  proportion="40"
-  slides="2"
-  [loop]="true"
-  [hideArrows]="false"
-  [hideIndicators]="false"
-  [useKeyboard]="true"
-  [useMouseWheel]="false"
-  orientation="ltr"
->
-  <mat-carousel-slide
-    #matCarouselSlide
-    image="assets/images/slider1.jpg"
-    overlayColor="#00000040"
-    [hideOverlay]="false"
-  >
-  <mat-grid-list cols="11" rowHeight="100px">
-    <mat-grid-tile [colspan]=1>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]=3 [rowspan]=7>
-      <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-    </mat-grid-tile>
-    
-  </mat-grid-list>
-  <app-blogs></app-blogs>
+<div>
+<div class="container-fluid">
+  <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <div class="wrapper">
+        <img [src]="images[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First Slide</h3>
+        <p> Angular 10 Carousel Example </p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="wrapper">
+        <img [src]="images[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Second Slide</h3>
+        <p> Check out Techiediaries</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="wrapper">
+        <img [src]="images[2]"  alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Third Slide</h3>
+        <p>for full tutorial...</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  </div>
 
-  </mat-carousel-slide>
-  <mat-carousel-slide
-    #matCarouselSlide
-    image="assets/images/slider2.jpg"
-    overlayColor="#00000040"
-    [hideOverlay]="false"
-  ></mat-carousel-slide>
-</mat-carousel>
-<app-blogs></app-blogs>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <app-blogs></app-blogs>
+      </div>
+
+
+      <div class="col-md-4">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,7 +21,8 @@
             <a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Shivalik College</a>
             <a href="#" class="icon-link"><i class="fa fa-comments-o"></i> 150</a>
           </p>
-          <p>{{blog.content.substring(0, 250)}}...</p>
+          <p ng-bind-html="toTrustedHTML(blog.content)"></p>
+
           <a href="#" class="btn btn--with-icon"><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
         </div>
       </article>

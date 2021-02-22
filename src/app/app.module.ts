@@ -46,6 +46,7 @@ import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     EditorComponent,
     UpdateBlogComponent,
     BlogsComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

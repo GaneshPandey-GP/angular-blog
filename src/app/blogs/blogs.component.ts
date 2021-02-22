@@ -12,6 +12,7 @@ export class BlogsComponent implements OnInit {
 
   constructor(private adminService:AdminService) { }
   blogs: any = [];
+  // content: any = [];
 
   ngOnInit() {
     this.adminService.viewBlogs()
@@ -25,10 +26,13 @@ export class BlogsComponent implements OnInit {
       },
       err => console.log(err)
     );
+    // for (let i=0; i<=this.blogs.length; i++){
+    //   console.log(i)
+    //   this.content.push(parse((this.blogs[i].content)))
+    // }
+    // console.log(this.content)
   }
-  getParsed() {
-    
-  }
+
   
 
 

@@ -22,10 +22,12 @@ export class BlogsComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.blogs=data;
+          console.log(this.blogs);
         }
       },
       err => console.log(err)
     );
+
     // for (let i=0; i<=this.blogs.length; i++){
     //   console.log(i)
     //   this.content.push(parse((this.blogs[i].content)))
@@ -33,7 +35,7 @@ export class BlogsComponent implements OnInit {
     // console.log(this.content)
   }
 
-  
+
 
 
 }

@@ -18,7 +18,9 @@ export class CreateBlogComponent implements OnInit {
     subCategory: new FormControl(''),
     title: new FormControl(''),
     thumbnail: new FormControl(''),
-    content: new FormControl('')
+    content: new FormControl(''),
+    desc: new FormControl('')
+
   })
 
   constructor(private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateBlogComponent>){}
@@ -85,7 +87,7 @@ export class CreateBlogComponent implements OnInit {
 
   submit() {
     this.adminService
-      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.content, this.createBlogForm.value.thumbnail)
+      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.desc, this.createBlogForm.value.content, this.createBlogForm.value.thumbnail)
       .subscribe(
         data => {
           console.log('data ', data);

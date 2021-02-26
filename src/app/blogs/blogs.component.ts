@@ -27,16 +27,11 @@ export class BlogsComponent implements OnInit {
       },
       err => console.log(err)
     );
-    
-// console.log(this.blogs[0].content.substring(0,200))
-
-    // for (let i=0; i<=this.blogs.length; i++){
-    //   console.log(i)
-    //   this.content.push(parse((this.blogs[i].content)))
-    // }
-    // console.log(this.content)
   }
 
+    setLocal(blogid: any) {
+      localStorage.setItem("blogid", blogid)
+    }
 
 
 

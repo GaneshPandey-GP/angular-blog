@@ -13,7 +13,9 @@ export class AdminService {
   createApiPath=this.apiPath+'/create';
   readApiPath=this.apiPath+'/fetch';
   updateApiPath=this.apiPath+'/update';
+
   constructor(private http: HttpClient) { }
+  
   createCategory(name:any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
@@ -60,7 +62,7 @@ export class AdminService {
     );
   }
 
-  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
       collection:"blog",
@@ -72,6 +74,7 @@ export class AdminService {
         subCategory: subCategory,
         subCategoryid: subCategoryid,
         title: title,
+        desc: desc,
         content: content,
         thumbnail: thumbnail,
         isActive:1,
@@ -142,7 +145,7 @@ export class AdminService {
     );
   }
 
-  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
+  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.updateApiPath,{
       database:"Blog",
       collection:"blog",
@@ -155,6 +158,7 @@ export class AdminService {
         subCategory: subCategory,
         subCategoryid: subCategoryid,
         title: title,
+        desc: desc,
         content: content,
         thumbnail: thumbnail
       }
@@ -163,6 +167,25 @@ export class AdminService {
       map((res: any) => {
         return res;
         this.viewBlogs()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  getBlog(blogid: any){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
+        blogid: blogid,
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
       }),
       catchError((err) => {
         return err;

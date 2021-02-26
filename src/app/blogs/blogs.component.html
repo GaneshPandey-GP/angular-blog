@@ -21,11 +21,32 @@
             <a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Shivalik College</a>
             <a href="#" class="icon-link"><i class="fa fa-comments-o"></i> 150</a>
           </p>
-          <p ng-bind-html="toTrustedHTML(blog.content)"></p>
+          <p {{[innerHTML]="blog.content".substring(0,200)}}></p>
 
-          <a href="#" class="btn btn--with-icon"><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
+          <a [routerLink]="['/blog', blog.title]" class="btn btn--with-icon"><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
         </div>
       </article>
     </div>
   </div>
+</div>
+<div class="wrapper">
+  <nav>
+      <ul class="pager">
+          <li class="pager__item pager__item--prev"><a class="pager__link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
+                      <g fill="none" fill-rule="evenodd">
+                          <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
+                      </g>
+                  </svg></a></li>
+          <li class="pager__item"><a class="pager__link" href="#">...</a></li>
+          <li class="pager__item"><a class="pager__link" href="#">1</a></li>
+          <li class="pager__item active"><a class="pager__link" href="#">2</a></li>
+          <li class="pager__item"><a class="pager__link" href="#">3</a></li>
+          <li class="pager__item"><a class="pager__link" href="#">...</a></li>
+          <li class="pager__item pager__item--next"><a class="pager__link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
+                      <g fill="none" fill-rule="evenodd">
+                          <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
+                      </g>
+                  </svg></a></li>
+      </ul>
+  </nav>
 </div>

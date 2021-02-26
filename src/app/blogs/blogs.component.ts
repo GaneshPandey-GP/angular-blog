@@ -26,11 +26,8 @@ export class BlogsComponent implements OnInit {
       },
       err => console.log(err)
     );
-    // for (let i=0; i<=this.blogs.length; i++){
-    //   console.log(i)
-    //   this.content.push(parse((this.blogs[i].content)))
-    // }
-    // console.log(this.content)
+    
+console.log(this.blogs[0].content.substring(0,200))
   }
 
   

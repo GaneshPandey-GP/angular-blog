@@ -47,6 +47,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
+import { BlogdetailComponent } from './blogdetail/blogdetail.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { FooterComponent } from './footer/footer.component';
     UpdateBlogComponent,
     BlogsComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    BlogdetailComponent
   ],
   imports: [
     BrowserModule,

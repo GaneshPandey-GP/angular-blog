@@ -24,6 +24,13 @@ class MongoAPI:
         documents = self.collection.find(filt)
         output = [{item: data[item] for item in data if item != '_id'} for data in documents]
         return output
+    def readWithFilter(self):
+        filt = self.data['Filter']
+        lim = self.data['Limit']
+        sk = self.data['Skip']
+        documents = self.collection.find(filt).limit(lim).skip(sk)
+        output = [{item: data[item] for item in data if item != '_id'} for data in documents]
+        return output
     def login(self):
         documents = self.collection.find({"email": self.data['email'],"pwd":self.data['password'],"isActive":1})
         output = [{item: data[item] for item in data if item != '_id'} for data in documents]
@@ -100,6 +107,18 @@ def update():
                         mimetype='application/json')
     obj1 = MongoAPI(data)
     response = obj1.update()
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+@app.route('/fetchWithLimit', methods=['POST'])
+def fetch():
+    data = request.json
+    if data is None or data == {}:
+        return Response(response=json.dumps({"Error": "Please provide connection information"}),
+                        status=400,
+                        mimetype='application/json')
+    obj1 = MongoAPI(data)
+    response = obj1.readWithFilter()
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')

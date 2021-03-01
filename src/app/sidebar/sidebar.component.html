@@ -33,7 +33,7 @@
     </div>
     <div class="card pt-3">
       <ul *ngFor="let category of categories">
-        <li><a href="#">{{category.name}}</a></li>
+        <li class="btn-link" (click)="handleCategory(category.categoryid)">{{category.name}}</li>
       </ul>
     </div>
   </div>

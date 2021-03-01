@@ -20,7 +20,6 @@ export class BlogdetailComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.blog=data;
-          console.log(this.blog);
         }
       },
       err => console.log(err)

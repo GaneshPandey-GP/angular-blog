@@ -9,10 +9,12 @@ import { map,catchError } from 'rxjs/operators';
 export class AdminService {
 
   apiPath='http://127.0.0.1:5001';
-  loginApiPath=this.apiPath+'/login';
-  createApiPath=this.apiPath+'/create';
-  readApiPath=this.apiPath+'/fetch';
-  updateApiPath=this.apiPath+'/update';
+  loginApiPath = this.apiPath+'/login';
+  createApiPath = this.apiPath+'/create';
+  readApiPath = this.apiPath+'/fetch';
+  updateApiPath = this.apiPath+'/update';
+  paginationFetch = this.apiPath+'/fetchWithLimit';
+
 
   constructor(private http: HttpClient) { }
   
@@ -236,4 +238,42 @@ export class AdminService {
       })
     );
   }
+
+
+pagination(number:any){
+  return this.http.post<any>(this.paginationFetch,{
+    database:"Blog",
+    collection:"blog",
+    Limit:2,
+    Skip:number,
+    Filter:{
+    }
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+
+filterByCategory(categoryid: any){
+  return this.http.post<any>(this.readApiPath,{
+    database:"Blog",
+    collection:"blog",
+    Filter:{
+      categoryid: categoryid
+    }
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
 }

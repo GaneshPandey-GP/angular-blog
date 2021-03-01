@@ -8,6 +8,7 @@ import { AdminService } from '../admin-service/admin.service';
 })
 export class SidebarComponent implements OnInit {
   categories: any = [];
+  blogs: any = [];
   constructor(private adminService:AdminService ) { }
 
   ngOnInit(): void {
@@ -20,6 +21,21 @@ export class SidebarComponent implements OnInit {
           } else {
             this.categories=data;
           }
+        },
+        err => console.log(err)
+      );
+  }
+  handleCategory(value: any) {
+    this.adminService
+      .filterByCategory(value)
+      .subscribe(
+        data => {
+          if (data.length == 0) {
+            throw new Error('Error Fetching Blogs... ');
+          } else {
+            this.blogs = data;
+            console.log(this.blogs)
+          }  
         },
         err => console.log(err)
       );

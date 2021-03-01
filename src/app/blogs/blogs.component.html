@@ -4,7 +4,10 @@
       <article class="blog-card">
         <div class="blog-card__background">
           <div class="card__background--wrapper">
-            <div class="card__background--main" style="background-image: url({{blog.thumbnail}});">
+            <div
+              class="card__background--main"
+              style="background-image: url({{ blog.thumbnail }});"
+            >
               <div class="card__background--layer"></div>
             </div>
           </div>
@@ -16,14 +19,23 @@
           </span>
         </div>
         <div class="blog-card__info">
-          <h5 class="lead">{{blog.title}}</h5>
+          <h5 class="lead">{{ blog.title }}</h5>
           <p>
-            <a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Shivalik College</a>
-            <a href="#" class="icon-link"><i class="fa fa-comments-o"></i> 150</a>
+            <a href="#" class="icon-link mr-3"
+              ><i class="fa fa-pencil-square-o"></i>Shivalik College</a
+            >
+            <a href="#" class="icon-link"
+              ><i class="fa fa-comments-o"></i> 150</a
+            >
           </p>
 
           <p [innerHtml]="blog.desc"></p>
-          <a [routerLink]="['/blog', blog.title]" (click)="setLocal(blog.blogid)" class="btn btn--with-icon"><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
+          <a
+            [routerLink]="['/blog', blog.title]"
+            (click)="setLocal(blog.blogid)"
+            class="btn btn--with-icon"
+            ><i class="btn-icon fa fa-long-arrow-right"></i>READ MORE</a
+          >
         </div>
       </article>
     </div>
@@ -31,22 +43,44 @@
 </div>
 <div class="wrapper">
   <nav>
-      <ul class="pager">
-          <li class="pager__item pager__item--prev"><a class="pager__link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
-                      <g fill="none" fill-rule="evenodd">
-                          <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
-                      </g>
-                  </svg></a></li>
-          <li class="pager__item"><a class="pager__link" href="#">...</a></li>
-          <li class="pager__item"><a class="pager__link" href="#">1</a></li>
-          <li class="pager__item active"><a class="pager__link" href="#">2</a></li>
-          <li class="pager__item"><a class="pager__link" href="#">3</a></li>
-          <li class="pager__item"><a class="pager__link" href="#">...</a></li>
-          <li class="pager__item pager__item--next"><a class="pager__link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
-                      <g fill="none" fill-rule="evenodd">
-                          <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
-                      </g>
-                  </svg></a></li>
-      </ul>
+    <ul class="pager">
+      <li class="pager__item pager__item--prev">
+        <button class="pager__link" (click)="handlePagination('prev')"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="8"
+            height="12"
+            viewbox="0 0 8 12"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <path
+                fill="#33313C"
+                d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
+              ></path>
+            </g></svg
+        ></button>
+      </li>
+      <!-- <li class="pager__item"><a class="pager__link" href="#">...</a></li>
+      <li class="pager__item"><a class="pager__link" href="#">1</a></li>
+      <li class="pager__item active"><a class="pager__link" href="#">2</a></li>
+      <li class="pager__item"><a class="pager__link" href="#">3</a></li>
+      <li class="pager__item"><a class="pager__link" href="#">...</a></li> -->
+      <li class="pager__item pager__item--next">
+        <button class="pager__link"  (click)="handlePagination('next')"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="8"
+            height="12"
+            viewbox="0 0 8 12"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <path
+                fill="#33313C"
+                d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
+              ></path>
+            </g></svg
+        ></button>
+      </li>
+    </ul>
   </nav>
 </div>

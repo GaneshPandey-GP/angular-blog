@@ -24,7 +24,7 @@ class MongoAPI:
         documents = self.collection.find(filt)
         output = [{item: data[item] for item in data if item != '_id'} for data in documents]
         return output
-    def readWithFilter(self):
+    def readWithFilter2(self):
         filt = self.data['Filter']
         lim = self.data['Limit']
         sk = self.data['Skip']
@@ -118,7 +118,7 @@ def fetch():
                         status=400,
                         mimetype='application/json')
     obj1 = MongoAPI(data)
-    response = obj1.readWithFilter()
+    response = obj1.readWithFilter2()
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')

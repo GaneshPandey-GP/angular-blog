@@ -9,11 +9,15 @@ import { map,catchError } from 'rxjs/operators';
 export class AdminService {
 
   apiPath='http://127.0.0.1:5001';
-  loginApiPath=this.apiPath+'/login';
-  createApiPath=this.apiPath+'/create';
-  readApiPath=this.apiPath+'/fetch';
-  updateApiPath=this.apiPath+'/update';
+  loginApiPath = this.apiPath+'/login';
+  createApiPath = this.apiPath+'/create';
+  readApiPath = this.apiPath+'/fetch';
+  updateApiPath = this.apiPath+'/update';
+  paginationFetch = this.apiPath+'/fetchWithLimit';
+
+
   constructor(private http: HttpClient) { }
+  
   createCategory(name:any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
@@ -60,7 +64,7 @@ export class AdminService {
     );
   }
 
-  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
       collection:"blog",
@@ -72,6 +76,7 @@ export class AdminService {
         subCategory: subCategory,
         subCategoryid: subCategoryid,
         title: title,
+        desc: desc,
         content: content,
         thumbnail: thumbnail,
         isActive:1,
@@ -142,7 +147,7 @@ export class AdminService {
     );
   }
 
-  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, content: any, thumbnail: any){
+  updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.updateApiPath,{
       database:"Blog",
       collection:"blog",
@@ -155,6 +160,7 @@ export class AdminService {
         subCategory: subCategory,
         subCategoryid: subCategoryid,
         title: title,
+        desc: desc,
         content: content,
         thumbnail: thumbnail
       }
@@ -163,6 +169,25 @@ export class AdminService {
       map((res: any) => {
         return res;
         this.viewBlogs()
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
+  getBlog(blogid: any){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"blog",
+      Filter:{
+        blogid: blogid,
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
       }),
       catchError((err) => {
         return err;
@@ -213,4 +238,42 @@ export class AdminService {
       })
     );
   }
+
+
+pagination(number:any){
+  return this.http.post<any>(this.paginationFetch,{
+    database:"Blog",
+    collection:"blog",
+    Limit:2,
+    Skip:number,
+    Filter:{
+    }
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+
+filterByCategory(categoryid: any){
+  return this.http.post<any>(this.readApiPath,{
+    database:"Blog",
+    collection:"blog",
+    Filter:{
+      categoryid: categoryid
+    }
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
 }

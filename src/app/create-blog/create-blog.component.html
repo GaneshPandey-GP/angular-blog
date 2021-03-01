@@ -28,19 +28,23 @@
     <mat-label>Title of the blog</mat-label>
     <textarea matInput placeholder="Enter the title of the blog..." formControlName="title" required></textarea>
   </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Short Description</mat-label>
+    <textarea matInput placeholder="Enter the short Description of the blog..." formControlName="desc" required></textarea>
+  </mat-form-field>
     <mat-label>Thumbnail of the blog</mat-label>
     <br/>
     <input
       #thumbnail
       type="file"
       (change) ="handleImgChange(thumbnail)"
-      style="margin: 0.3rem;"
+      style="margin: 0.3rem; padding: 0.3rem;"
     />
     <img *ngIf="thumbnail"
       matPrefix
       [src]="this.createBlogForm.value.thumbnail"
       alt="image"
-      style="height: 300px; width:500px"
+      style="height: 40%; width:40%; padding: 0.4rem;"
     />
   <textarea  formControlName="content" [froalaEditor]>Start writing your blog!</textarea >
 </mat-dialog-content>

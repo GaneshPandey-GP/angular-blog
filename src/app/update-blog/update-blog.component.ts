@@ -47,6 +47,7 @@ export class UpdateBlogComponent implements OnInit {
         categoryid: this.blogInfo.blogInfo.categoryid,
         subCategoryid: this.blogInfo.blogInfo.subCategoryid,
         title: this.blogInfo.blogInfo.title,
+        desc: this.blogInfo.blogInfo.desc,
         content: this.blogInfo.blogInfo.content,
         thumbnail: this.blogInfo.blogInfo.thumbnail
       });
@@ -94,7 +95,7 @@ export class UpdateBlogComponent implements OnInit {
   submit() {
     console.log(this.updateBlogForm.value)
     this.adminService
-      .updateBlog(this.blogInfo.blogInfo.blogid, this.updateBlogForm.value.subCategory.category, this.updateBlogForm.value.subCategory.categoryid, this.updateBlogForm.value.subCategory.name, this.updateBlogForm.value.subCategory.subCategoryid, this.updateBlogForm.value.title, this.updateBlogForm.value.content, this.updateBlogForm.value.thumbnail)
+      .updateBlog(this.blogInfo.blogInfo.blogid, this.updateBlogForm.value.subCategory.category, this.updateBlogForm.value.subCategory.categoryid, this.updateBlogForm.value.subCategory.name, this.updateBlogForm.value.subCategory.subCategoryid, this.updateBlogForm.value.title, this.updateBlogForm.value.desc, this.updateBlogForm.value.content, this.updateBlogForm.value.thumbnail)
       .subscribe(
         data => {
           console.log('data ', data);

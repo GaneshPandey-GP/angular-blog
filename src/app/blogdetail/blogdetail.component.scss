@@ -1,0 +1,10 @@
+.blog-container {
+    margin: 0 4rem;
+    padding: 0 10rem;
+}
+@media screen and (max-width: 576px){
+    .blog-container {
+        margin: 0;
+        padding: 0 2rem;
+    }
+}

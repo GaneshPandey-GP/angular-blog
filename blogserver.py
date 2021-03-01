@@ -111,7 +111,7 @@ def update():
                     status=200,
                     mimetype='application/json')
 @app.route('/fetchWithLimit', methods=['POST'])
-def fetch():
+def fetchWithLimit():
     data = request.json
     if data is None or data == {}:
         return Response(response=json.dumps({"Error": "Please provide connection information"}),

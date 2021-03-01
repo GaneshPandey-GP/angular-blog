@@ -45,7 +45,7 @@ body{
     overflow: hidden;
   }
   .card__background--main{
-    height: 100%;
+    height: 60%;
     position: relative;
     transition: 300ms ease-in-out;
     background-repeat: no-repeat;
@@ -137,5 +137,115 @@ a.icon-link {
   }
   &.btn--only-icon {
     width: 50px;
+  }
+}
+
+$accent: #ffb74d;
+$text_color: #2f3640;
+@function rem($px) {
+  	@return $px / 16px + 0rem;
+	@return $px;
+}
+
+
+
+
+.wrapper {
+	width: 400px;
+	padding: 20px;
+	margin: 20px auto;
+	background-color: #ffffff;
+	box-shadow: 0 1px 2px 0 #c9ced1;
+	border-radius: 4px;
+}
+
+h1{
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.pager{
+	margin: 0 0 rem(60px);
+	font-size: 0;
+	text-align: center;
+	&__item{
+		display: inline-block;
+		vertical-align: top;
+		font-size: rem(18px);
+		font-weight: bold;
+		margin: 0 2px;
+		&.active{
+			.pager__link{
+				background-color: $accent;
+				border-color: $accent;
+				color: #fff;
+				text-decoration: none;
+      }
+    }
+		&--prev, &--next {
+			svg{
+				width: 8px;
+				height: 12px;
+      }
+    }
+		&--next{
+			.pager__link{
+				svg{
+					transform: rotate(180deg);
+					transform-origin: center center;
+        }
+      }
+    }
+  }
+
+	&__link{
+		position: relative;
+		border-radius: 4px;
+		display: block;
+		text-align: center;
+		width: rem(42px);
+		height: rem(42px);
+		line-height: rem(42px);
+		margin-left: -1px;
+		color: $text_color;
+		text-decoration: none;
+		transition: .3s;
+		&:hover, &:focus, &:active{
+			background-color: $accent;
+			border-color: $accent;
+			color: #fff;
+			text-decoration: none;
+			svg path{
+				fill: #fff;
+      }
+    }
+  }
+	.pager__item.active + .pager__item, .pager__item:hover + .pager__item{
+		.pager__link{
+			border-left-color: $accent;
+    }
+  }
+}
+
+@media screen and (max-width: 576px){
+  .pager {
+    &__item{	
+      position: absolute;
+			top: -9999px;
+			left: -9999px;
+			&.active, &:first-of-type, &:last-of-type, &:nth-of-type(2), &:nth-last-of-type(2){
+				position: initial;
+				top: initial;
+				left: initial;
+      }
+    }
+		&__item.active{
+      	& + li {
+				position: initial;
+				top: initial;
+				left: initial;
+        }
+    }
   }
 }

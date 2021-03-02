@@ -1,21 +1,9 @@
-<mat-toolbar style="padding: 20px;">
-  <span>Infigini Blogs</span>
-  <span class="spacer"></span>
-  <div fxLayout="row" fxShow="true" fxShow.gt-sm>
-    <button mat-button routerLink="/dashboard">Home</button>
-
-    <button mat-button [matMenuTriggerFor]="menu">Category</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
-
-
-  </div>
-  <span class="spacer"></span>
-
-  <button mat-icon-button class="search__icon" aria-label="search__icon">
-    <mat-icon>search</mat-icon>
-  </button>
-  <mat-slide-toggle (click)="toggleTheme()"> </mat-slide-toggle>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Infigini Blogs</span>
+    <span class="spacer"></span>
+    <mat-slide-toggle (click)="toggleTheme()" class="ml-3"> </mat-slide-toggle>
+    <mat-icon class="ml-3" (click)="logout()" *ngIf="isLoggedIn">logout</mat-icon> 
+    <mat-icon class="ml-3" (click)="logout()" *ngIf="!isLoggedIn">login</mat-icon>  
+  </mat-toolbar-row>
 </mat-toolbar>

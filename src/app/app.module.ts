@@ -28,6 +28,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -48,6 +49,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlogdetailComponent } from './blogdetail/blogdetail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,9 @@ import { BlogdetailComponent } from './blogdetail/blogdetail.component';
     BlogsComponent,
     SidebarComponent,
     FooterComponent,
-    BlogdetailComponent
+    BlogdetailComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +107,8 @@ import { BlogdetailComponent } from './blogdetail/blogdetail.component';
     MatBottomSheetModule,
     MatListModule,
     MatTreeModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

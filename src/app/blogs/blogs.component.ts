@@ -12,7 +12,7 @@ export class BlogsComponent implements OnInit {
   constructor(private adminService: AdminService) {}
   allBlogs: any = [];
   blogs: any = [];
-  pageNo: any;
+  pageNo: any = 1;
   noOfBlogs: any;
   currentValue: any = 0;
 
@@ -55,11 +55,13 @@ export class BlogsComponent implements OnInit {
               throw new Error('Error Fetching Blogs... ');
             } else {
               this.blogs = data;
+              this.pageNo = this.pageNo - 1;
               console.log(this.blogs)
             }
           },
           (err) => console.log(err)
         );
+        
         this.currentValue = this.currentValue - 2;
       }
     } else {
@@ -70,12 +72,14 @@ export class BlogsComponent implements OnInit {
               throw new Error('Error Fetching Blogs... ');
             } else {
               this.blogs = data;
+              this.pageNo = this.pageNo + 1;
               console.log(this.blogs)
 
             }
           },
           (err) => console.log(err)
         );
+        
         this.currentValue = this.currentValue + 2;
       }
     }

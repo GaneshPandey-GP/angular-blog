@@ -2,12 +2,12 @@
     <div class="sidebar-heading mt-3">
       <h2>Recent Posts</h2>
     </div>
-    <div class="card mb-3 mt-3">
+    <div class="card mb-3 mt-3" *ngFor="let blog of recentBlogs">
         <div class="row">
           <div class="col-md-4">
             <img
-              src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
-              alt="..."
+              src={{blog.thumbnail}}
+              alt="---"
               class="img-fluid"
             />
           </div>
@@ -17,7 +17,7 @@
                 <small class="text-muted">Last updated 3 mins ago</small>
               </p>
               <p class="card-text pr-1">
-                This is a wider card with supporting text below..
+                {{blog.title}}
               </p>
              
               <a class="btn btn-outline-warning">Read</a>

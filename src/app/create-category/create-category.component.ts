@@ -28,10 +28,15 @@ export class CreateCategoryComponent {
   });
 
   constructor(private adminService:AdminService, private router: Router, private _snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateCategoryComponent>){}
+  
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000,
     });
+  }
+  
+  close(): void {
+    this.dialogRef.close();
   }
   createCategory() {
     if(this.createCategoryForm.value.name!=''){
@@ -53,7 +58,5 @@ export class CreateCategoryComponent {
 
     }
   }
-  close(): void {
-    this.dialogRef.close();
-  }
+
 }

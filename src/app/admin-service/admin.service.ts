@@ -14,10 +14,54 @@ export class AdminService {
   readApiPath = this.apiPath+'/fetch';
   updateApiPath = this.apiPath+'/update';
   paginationFetch = this.apiPath+'/fetchWithLimit';
-
+  blogs: any = [];
 
   constructor(private http: HttpClient) { }
+
+  register(username:any, email: any, password: any){
+    return this.http.post<any>(this.createApiPath,{
+      database:"Blog",
+      collection:"user",
+      sequenceType:"userSequence",
+      idType:"userid",
+      document:{
+        username:username,
+        email:email,
+        password:password,
+        isActive:1,
+        isVisible:true
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
   
+  login(username: any, password: any){
+    return this.http.post<any>(this.readApiPath,{
+      database:"Blog",
+      collection:"user",
+      Filter:{
+        username:username,
+        password:password,
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+        console.log(res)
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+
   createCategory(name:any){
     return this.http.post<any>(this.createApiPath,{
       database:"Blog",
@@ -276,4 +320,25 @@ filterByCategory(categoryid: any){
     })
   );
 }
+
+// getRecentBlog(){
+//   return this.http.post<any>(this.readApiPath,{
+//     database:"Blog",
+//     collection:"sequences",
+//     Filter:{
+//       blogid: blogid,
+//       isActive:1
+//     }
+//   })
+//   .pipe(
+//     map((res: any) => {
+//       return res;
+//     }),
+//     catchError((err) => {
+//       return err;
+//     })
+//   );
+// }
+
+
 }

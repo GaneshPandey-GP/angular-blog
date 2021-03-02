@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,13 @@ import { OverlayContainer } from '@angular/cdk/overlay';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private overlay: OverlayContainer) { }
+  userData: any;
+  isLoggedIn: any = false;
+  constructor(private overlay: OverlayContainer, private router: Router) { }
 
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem("user"));
+    if(this.userData.length > 0) this.isLoggedIn = true; else this.isLoggedIn = false;
   }
   toggleTheme(): void {
     if (this.overlay.getContainerElement().classList.contains("dark-theme")) {
@@ -33,4 +37,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  logout() {
+    localStorage.clear()
+    this.router.navigate(["/login"]);
+  }
 }

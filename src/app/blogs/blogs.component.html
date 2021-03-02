@@ -60,11 +60,13 @@
             </g></svg
         ></button>
       </li>
-      <!-- <li class="pager__item"><a class="pager__link" href="#">...</a></li>
-      <li class="pager__item"><a class="pager__link" href="#">1</a></li>
-      <li class="pager__item active"><a class="pager__link" href="#">2</a></li>
-      <li class="pager__item"><a class="pager__link" href="#">3</a></li>
-      <li class="pager__item"><a class="pager__link" href="#">...</a></li> -->
+      {{pageNo === 1 ? <span></span> :
+      <li class="pager__item"><a class="pager__link">...</a></li>
+      <li class="pager__item"><button class="pager__link" (click)="handlePagination('prev')">{{pageNo-1}}</button></li>
+      }}
+      <li class="pager__item active"><button class="pager__link">{{pageNo}}</button></li>
+      <li class="pager__item"><button class="pager__link" (click)="handlePagination('next')">{{pageNo + 1}}</button></li>
+      <li class="pager__item"><a class="pager__link">...</a></li>
       <li class="pager__item pager__item--next">
         <button class="pager__link"  (click)="handlePagination('next')"
           ><svg

@@ -1,4 +1,4 @@
-<div class="mt-5" *ngFor="let blog of blogs">
+<!-- <div class="mt-5" *ngFor="let blog of blogs">
   <div class="row">
     <div class="col-12">
       <article class="blog-card">
@@ -6,7 +6,7 @@
           <div class="card__background--wrapper">
             <div
               class="card__background--main"
-              style="background-image: url({{ blog.thumbnail }});"
+              style="background-image: url({{blog.thumbnail}});"
             >
               <div class="card__background--layer"></div>
             </div>
@@ -85,4 +85,99 @@
       </li>
     </ul>
   </nav>
+</div> -->
+<div class="iner_banner">
+  <div class="container">
+    <h5>Blog Medium</h5>
+    <div class="banner_iner_capstion">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog Medium</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<div class="iq_content_wrap">
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6" *ngFor="let blog of blogs">
+          <div class="blog-medium">
+            <figure>
+              <img src={{blog.thumbnail}} alt="blog thumbnail" class="card__background--main" width="600px" height="600px"/>
+            </figure>
+            <div class="blog-medium-caption">
+              <a href="#"><i class="fa fa-camera"></i></a>
+              <h5><a [routerLink]="['/blog', blog.title]" (click)="setLocal(blog.blogid)" >{{ blog.title }}</a></h5>
+              <ul>
+                <li>
+                  <a href="#">Posted Aug 19, 2015</a>
+                </li>
+                <li>
+                  <a href="#">by <span>Anna Doe</span></a>
+                </li>
+              </ul>
+            <a></a>
+              <p  [innerHtml]="blog.desc"></p>
+            </div>
+          </div>
+        </div>
+     
+        <div class="col-md-12 col-sm-12">
+          <!--Pagination Start-->
+                        <div class="iqoniq-pagination text-center">
+                          <div class="wrapper">
+                            <nav>
+                              <ul class="pager">
+                                <li class="pager__item pager__item--prev">
+                                  <button class="pager__link" (click)="handlePagination('prev')"
+                                    ><svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="8"
+                                      height="12"
+                                      viewbox="0 0 8 12"
+                                    >
+                                      <g fill="none" fill-rule="evenodd">
+                                        <path
+                                          fill="#33313C"
+                                          d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
+                                        ></path>
+                                      </g></svg
+                                  ></button>
+                                </li>
+                                {{pageNo === 1 ? <span></span> :
+                                <li class="pager__item"><a class="pager__link">...</a></li>
+                                <li class="pager__item"><button class="pager__link" (click)="handlePagination('prev')">{{pageNo-1}}</button></li>
+                                }}
+                                <li class="pager__item active"><button class="pager__link">{{pageNo}}</button></li>
+                                <li class="pager__item"><button class="pager__link" (click)="handlePagination('next')">{{pageNo + 1}}</button></li>
+                                <li class="pager__item"><a class="pager__link">...</a></li>
+                                <li class="pager__item pager__item--next">
+                                  <button class="pager__link"  (click)="handlePagination('next')"
+                                    ><svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="8"
+                                      height="12"
+                                      viewbox="0 0 8 12"
+                                    >
+                                      <g fill="none" fill-rule="evenodd">
+                                        <path
+                                          fill="#33313C"
+                                          d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
+                                        ></path>
+                                      </g></svg
+                                  ></button>
+                                </li>
+                              </ul>
+                            </nav>
+                          </div> 
+                  </div>
+                  <!--Pagination End-->
+        </div>
+      </div>
+    </div>
+    <!--BLOG Medium PAGE END--> 
+  </section>
+</div>
+<!--Iqoniq Content End-->

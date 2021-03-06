@@ -1,18 +1,113 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+    // document.addEventListener('contextmenu', event => event.preventDefault());
+    //
+    // document.onkeydown = function (e) {
+    //     if(e.keyCode == 123) {
+    //         return false;
+    //     }
+    //     if(e.ctrlKey && e.shiftKey && e.keyCode == 73){
+    //         return false;
+    //     }
+    //     if(e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+    //         return false;
+    //     }
+    //     if(e.ctrlKey && e.keyCode == 85) {
+    //         return false;
+    //     }
+    // }
+
+  </script>
   <meta charset="utf-8">
-  <title>Blog</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet">
-  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shivalik Blogs</title>
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/js/dl-menu/component.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/svg.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/prettyPhoto.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/shortcodes.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/widget.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/typography.css"> -->
+  <link rel="stylesheet" type="text/css" href="/assets/style.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/color.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css"> -->
+  <!-- <div class="npf_wgts" data-height="400px" data-w="ae67d842a3d0437bee4eebe5043d6d75"></div> -->
+
 </head>
-<body class="mat-typography">
+<body>
+  <!-- <div class="npf_wgts" data-height="400px" data-w="ae67d842a3d0437bee4eebe5043d6d75"></div> -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHV3WDS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <app-root></app-root>
-</body>
+
+  <!--Javascript Library-->
+  <script src="/assets/js/jquery.js"></script>
+  <!--Bootstrap core JavaScript-->
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <!--SLICK SLIDER JavaScript-->
+  <script src="/assets/js/slick.min.js"></script>
+  <!--Dl Menu Script-->
+  <script src="/assets/js/dl-menu/modernizr.custom.js"></script>
+  <script src="/assets/js/dl-menu/jquery.dlmenu.js"></script>
+  <!--Pretty Photo JavaScript-->
+  <script src="/assets/js/jquery.prettyPhoto.js"></script>
+  <!--Image Filterable JavaScript-->
+  <script src="/assets/js/jquery-filterable.js"></script>
+  <!--Number Count (Waypoints) JavaScript-->
+  <script src="/assets/js/waypoints-min.js"></script>
+  <!--Custom JavaScript-->
+  <script src="/assets/js/custom.js"></script>
+  <script type="text/javascript">
+    var s=document.createElement("script");
+    s.type="text/javascript";
+    s.async=true;
+    s.src="https://widgets.nopaperforms.com/emwgts.js";
+    document.body.appendChild(s);
+  </script>
+  <script>
+    var loadMultipleCss = function(){
+        //load local stylesheet
+        loadCss('/assets/css/bootstrap.css');
+        loadCss('/assets/js/dl-menu/component.css');
+        loadCss('/assets/css/slick.css');
+        loadCss('/assets/css/font-awesome.min.css');
+        loadCss('/assets/css/svg.css');
+        loadCss('/assets/css/prettyPhoto.css');
+        loadCss('/assets/css/shortcodes.css');
+        loadCss('/assets/css/typography.css');
+        loadCss('/assets/css/widget.css');
+        // loadCss('/assets/style.css');
+        loadCss('/assets/css/color.css');
+        loadCss('/assets/css/responsive.css');
+    }
+
+    var loadCss = function(cssPath){
+        var cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = cssPath;
+        var head = document.getElementsByTagName('head')[0];
+        head.parentNode.insertBefore(cssLink, head);
+    };
+
+    //call function on window load
+    window.addEventListener('load', loadMultipleCss);
+    // var interval = setInterval(function() {
+    //   if(document.readyState === 'complete') {
+    //       console.log("tesrtg");
+    //
+    //       clearInterval(interval);
+    //   }
+    // }, 100);
+
+  </script>
+  </body>
 </html>

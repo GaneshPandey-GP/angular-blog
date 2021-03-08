@@ -41,7 +41,7 @@ export class AdminService {
       })
     );
   }
-  
+
   login(username: any, password: any){
     return this.http.post<any>(this.readApiPath,{
       database:"Blog",
@@ -288,7 +288,7 @@ pagination(number:any){
   return this.http.post<any>(this.paginationFetch,{
     database:"Blog",
     collection:"blog",
-    Limit:2,
+    Limit:8,
     Skip:number,
     Filter:{
     }

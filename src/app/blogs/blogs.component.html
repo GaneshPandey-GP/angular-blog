@@ -102,10 +102,10 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-6" *ngFor="let blog of blogs">
+        <div class="col-md-3 col-sm-3" *ngFor="let blog of blogs">
           <div class="blog-medium">
             <figure>
-              <img src={{blog.thumbnail}} alt="blog thumbnail" class="card__background--main" width="600px" height="600px"/>
+              <img src={{blog.thumbnail}} alt="blog thumbnail" class="card__background--main" style="min-height:200px;height:auto;width:auto;max-height:300px"/>
             </figure>
             <div class="blog-medium-caption">
               <a href="#"><i class="fa fa-camera"></i></a>
@@ -123,7 +123,7 @@
             </div>
           </div>
         </div>
-     
+
         <div class="col-md-12 col-sm-12">
           <!--Pagination Start-->
                         <div class="iqoniq-pagination text-center">
@@ -171,13 +171,13 @@
                                 </li>
                               </ul>
                             </nav>
-                          </div> 
+                          </div>
                   </div>
                   <!--Pagination End-->
         </div>
       </div>
     </div>
-    <!--BLOG Medium PAGE END--> 
+    <!--BLOG Medium PAGE END-->
   </section>
 </div>
 <!--Iqoniq Content End-->

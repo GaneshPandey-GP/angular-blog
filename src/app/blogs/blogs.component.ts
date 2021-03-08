@@ -61,7 +61,7 @@ export class BlogsComponent implements OnInit {
           },
           (err) => console.log(err)
         );
-        
+
         this.currentValue = this.currentValue - 2;
       }
     } else {
@@ -79,7 +79,7 @@ export class BlogsComponent implements OnInit {
           },
           (err) => console.log(err)
         );
-        
+
         this.currentValue = this.currentValue + 2;
       }
     }

@@ -8,7 +8,7 @@ import { map,catchError } from 'rxjs/operators';
 })
 export class AdminService {
 
-  apiPath='http://127.0.0.1:5001';
+  apiPath='https://scapi.shivalikcollege.edu.in/';
   loginApiPath = this.apiPath+'/login';
   createApiPath = this.apiPath+'/create';
   readApiPath = this.apiPath+'/fetch';

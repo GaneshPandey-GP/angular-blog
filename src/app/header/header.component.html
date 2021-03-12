@@ -1,9 +1,113 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Infigini Blogs</span>
-    <span class="spacer"></span>
-    <mat-slide-toggle (click)="toggleTheme()" class="ml-3"> </mat-slide-toggle>
-    <mat-icon class="ml-3" (click)="logout()" *ngIf="isLoggedIn">logout</mat-icon> 
-    <mat-icon class="ml-3" (click)="logout()" *ngIf="!isLoggedIn">login</mat-icon>  
-  </mat-toolbar-row>
-</mat-toolbar>
+<div>
+   <div class="row" style="padding-bottom: 10px;">
+      <div class="col-md-4 col-sm-4">
+         <div class="iq_logo mt-2"><a href="#"><img src="https://www.shivalikcollege.edu.in//assets/extra-images/images/ShivalikCollege.svg" alt="Shivalik College of Engineering" style="height: 75px; width: 250px;" class="mt-4 ml-5"><img src="https://www.shivalikcollege.edu.in//assets/extra-images/images/13years.png" alt="Shivalik College of Engineering"></a></div>
+      </div>
+      <div class="col-md-8 col-sm-8" style="padding-top: 20px;">
+         <div class="navigation-wrapper pull-left">
+            <div class="navigation">
+               <ul>
+                  <li><a href="about-us">About Us</a></li>
+                  <li>
+                     <a style="text-transform: initial!important;">Academics</a>
+                     <ul class="children">
+                        <li>
+                           <a href="college-of-engineering" style="text-transform: initial!important;">Shivalik College of Engineering</a>
+                           <ul class="children">
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-computer-science-engineering" style="text-transform: initial!important;"><strong>Department of Computer Science &amp; Engg.</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-civil-engineering" style="text-transform: initial!important;"><strong>Department of Civil Engg.</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-mechanical-engineering" style="text-transform: initial!important;"><strong>Department of Mechanical Engg.</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-electrical-and-communication-engineering" style="text-transform: initial!important;"><strong>Department of Electronics &amp; Communication Engg.</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-electrical-and-electronics-engineering" style="text-transform: initial!important;"><strong>Department of Electrical &amp; Electronics Engg.</strong></a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a href="https://www.shivalikcollege.edu.in/college-of-pharmacy" style="text-transform: initial!important;">College of Pharmacy</a>
+                           <ul class="children">
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-pharmacy/dpharma" style="text-transform: initial!important;"><strong>Diploma in Pharmacy</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-pharmacy/bpharma" style="text-transform: initial!important;"><strong>Bachelor in Pharmacy</strong></a></li>
+                           </ul>
+                        </li>
+                        
+                        <li>
+                           <a href="https://www.shivalikcollege.edu.in/institute-of-professional-studies" style="text-transform: initial!important;">Shivalik Institue of Professional Studies</a>
+                           <ul class="children">
+                              <li><a href="https://www.shivalikcollege.edu.in/institute-of-professional-studies/management" style="text-transform: initial!important;"><strong>Department of Management</strong></a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/institute-of-professional-studies/agriculture" style="text-transform: initial!important;"><strong>Department of Agriculture</strong></a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li><a href="https://www.shivalikcollege.edu.in/admissions">Admissions</a></li>
+                  <li><a href="https://www.shivalikcollege.edu.in/placements">Placements</a></li>
+                  <li><a href="https://www.shivalikcollege.edu.in/research">Research</a></li>
+                  <li><a href="https://www.shivalikcollege.edu.in/shivalik-at-glance">Campus Life</a></li>
+               </ul>
+            </div>
+            <div id="mg-responsive-navigation" class="dl-menuwrapper">
+               <button class="dl-trigger">Open Menu</button>
+               <ul class="dl-menu hide2">
+                  <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/about-us">About US</a></li>
+                  <li class="menu-item mg-parent-menu hide2">
+                     <a>Academics</a>
+                     <ul class="dl-submenu">
+                        <li class="dl-back"><a>back</a></li>
+                        <li>
+                           <a routerlink="college-of-engineering" href="https://www.shivalikcollege.edu.in/college-of-engineering">School of Engineering</a>
+                           <ul class="dl-submenu">
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-computer-science-engineering">Department of Computer Science &amp; Engg.</a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-civil-engineering">Department of Civil Engg.</a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-mechanical-engineering">Department of Mechanical Engg.</a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-electrical-and-electronics-engineering">Department of Electronics &amp; Communication Engg.</a></li>
+                              <li><a href="https://www.shivalikcollege.edu.in/college-of-engineering/department-electrical-and-communication-engineering">Department of Electrical &amp; Electronics Engg.</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a routerlink="college-of-pharmacy" href="https://www.shivalikcollege.edu.in/college-of-pharmacy">School of Pharmacy</a>
+                           <ul class="dl-submenu">
+                              <li><a href="#">Diploma in Pharmacy</a></li>
+                              <li><a href="#">Bachelor in Pharmacy</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a routerlink="institute-of-professional-studies" href="https://www.shivalikcollege.edu.in/institute-of-professional-studies">School of Professional Studies</a>
+                           <ul class="dl-submenu">
+                              <li><a href="#">Bachelor in Business Administration</a></li>
+                              <li><a href="#">Bachelor of Commerce</a></li>
+                              <li><a href="#">B.Sc Agriculture</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/admissions">Admissions</a></li>
+                  <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/placements">Placements</a></li>
+                  <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/research">Research</a></li>
+                  <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/shivalik-at-glance">Campus Life</a></li>
+                  <ul>
+                     <li class="menu-item mg-parent-menu"><a href="http://alumni.sce.org.in/" class="white-color">Alumni Connect</a></li>
+                     <li class="menu-item mg-parent-menu"><a href="http://erp.sce.org.in/" class="white-color">ERP Login</a></li>
+                     <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/contact-us" class="white-color">Contact Us</a></li>
+                     <li class="menu-item mg-parent-menu"><a href="https://www.shivalikcollege.edu.in/student-area">Student Area</a></li>
+                     <li class="menu-item mg-parent-menu"><a href="http://tap.shivalikcollege.edu.in/" target="_blank" class="white-color">T.A.P.</a></li>
+                     <li class="menu-item mg-parent-menu hide2">
+                        <a href="#" class="white-color">QUICK LINKS</a>
+                        <ul class="dl-submenu">
+                           <li class="dl-back"><a>back</a></li>
+                           <li><a>AICTE Mandatory Disclosure</a></li>
+                           <li><a href="https://www.shivalikcollege.edu.in/iqac">I.Q.A.C.</a></li>
+                           <li><a href='https://www.sce.org.in//nir-naac.pdf'>N.I.R.F.</a></li>
+                           <li><a href="http://erp.sce.org.in/">ERP Login</a></li>
+                           <li><a href="https://www.shivalikcollege.edu.in/student-area">Student Area</a></li>
+                           <li><a href="http://alumni.sce.org.in/">Alumni Connect</a></li>
+                           <li><a href="https://www.shivalikcollege.edu.in/news-events">News And Events</a></li>
+                           <li><a href="https://www.shivalikcollege.edu.in/contact-us">Contact Us</a></li>
+                           <li><a href="https://www.youtube.com/watch?v=2MyGcUdZSqo">Campus Tour</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

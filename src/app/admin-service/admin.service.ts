@@ -288,7 +288,7 @@ pagination(number:any){
   return this.http.post<any>(this.paginationFetch,{
     database:"ShivalikCollege",
     collection:"blog",
-    Limit:2,
+    Limit:4,
     Skip:number,
     Filter:{
     }

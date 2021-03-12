@@ -8,7 +8,7 @@ import { map,catchError } from 'rxjs/operators';
 })
 export class AdminService {
 
-  apiPath='https://scapi.shivalikcollege.edu.in/';
+  apiPath='https://scapi.shivalikcollege.edu.in';
   loginApiPath = this.apiPath+'/login';
   createApiPath = this.apiPath+'/create';
   readApiPath = this.apiPath+'/fetch';
@@ -288,7 +288,7 @@ pagination(number:any){
   return this.http.post<any>(this.paginationFetch,{
     database:"ShivalikCollege",
     collection:"blog",
-    Limit:8,
+    Limit:2,
     Skip:number,
     Filter:{
     }

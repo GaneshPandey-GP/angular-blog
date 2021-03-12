@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from flask_cors import CORS, cross_origin
 class MongoAPI:
     def __init__(self, data):
-        self.client = MongoClient("mongodb://blog:impossible@52.237.72.43:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false")
+        self.client = MongoClient("mongodb://root:impossibleme@65.1.60.50:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false")
         database = data['database']
         collection = data['collection']
         cursor = self.client.get_database(database)

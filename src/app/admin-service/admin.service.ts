@@ -20,7 +20,7 @@ export class AdminService {
 
   register(username:any, email: any, password: any){
     return this.http.post<any>(this.createApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"user",
       sequenceType:"userSequence",
       idType:"userid",
@@ -41,10 +41,10 @@ export class AdminService {
       })
     );
   }
-  
+
   login(username: any, password: any){
     return this.http.post<any>(this.readApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"user",
       Filter:{
         username:username,
@@ -64,7 +64,7 @@ export class AdminService {
 
   createCategory(name:any){
     return this.http.post<any>(this.createApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"category",
       sequenceType:"categorySequence",
       idType:"categoryid",
@@ -86,7 +86,7 @@ export class AdminService {
 
   createSubCategory(name:any, category: any, categoryid: any){
     return this.http.post<any>(this.createApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"subCategory",
       sequenceType:"subCategorySequence",
       idType:"subCategoryid",
@@ -110,7 +110,7 @@ export class AdminService {
 
   createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.createApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"blog",
       sequenceType:"blogSequence",
       idType:"blogid",
@@ -139,7 +139,7 @@ export class AdminService {
 
   viewCategories(){
     return this.http.post<any>(this.readApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"category",
       Filter:{
         isActive:1
@@ -156,7 +156,7 @@ export class AdminService {
   }
   viewSubCategories(categoryid: any){
     return this.http.post<any>(this.readApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"subCategory",
       Filter:{
         categoryid: categoryid,
@@ -175,7 +175,7 @@ export class AdminService {
 
   viewBlogs(){
     return this.http.post<any>(this.readApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"blog",
       Filter:{
         isActive:1
@@ -193,7 +193,7 @@ export class AdminService {
 
   updateBlog(blogid: any, category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.updateApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"blog",
       Filter:{
         blogid: blogid
@@ -222,7 +222,7 @@ export class AdminService {
 
   getBlog(blogid: any){
     return this.http.post<any>(this.readApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"blog",
       Filter:{
         blogid: blogid,
@@ -241,7 +241,7 @@ export class AdminService {
 
   updateCategory(categoryid: any, name: any){
     return this.http.post<any>(this.updateApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"category",
       Filter:{
         categoryid: categoryid
@@ -263,7 +263,7 @@ export class AdminService {
 
   updateSubCategory(subCategoryid: any, name: any){
     return this.http.post<any>(this.updateApiPath,{
-      database:"Blog",
+      database:"ShivalikCollege",
       collection:"category",
       Filter:{
         subCategoryid: subCategoryid
@@ -286,9 +286,9 @@ export class AdminService {
 
 pagination(number:any){
   return this.http.post<any>(this.paginationFetch,{
-    database:"Blog",
+    database:"ShivalikCollege",
     collection:"blog",
-    Limit:2,
+    Limit:8,
     Skip:number,
     Filter:{
     }
@@ -305,7 +305,7 @@ pagination(number:any){
 
 filterByCategory(categoryid: any){
   return this.http.post<any>(this.readApiPath,{
-    database:"Blog",
+    database:"ShivalikCollege",
     collection:"blog",
     Filter:{
       categoryid: categoryid
@@ -323,7 +323,7 @@ filterByCategory(categoryid: any){
 
 // getRecentBlog(){
 //   return this.http.post<any>(this.readApiPath,{
-//     database:"Blog",
+//     database:"ShivalikCollege",
 //     collection:"sequences",
 //     Filter:{
 //       blogid: blogid,

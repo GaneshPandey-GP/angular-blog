@@ -92,15 +92,15 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-6" *ngFor="let blog of blogs">
+        <div class="col-md-3 col-sm-6 col-sx-6" *ngFor="let blog of blogs">
           <div class="blog-medium">
             <figure>
-              <img src={{blog.thumbnail}} alt="blog thumbnail" class="card__background--main" width="600px" height="600px"/>
+              <img src={{blog.thumbnail}} alt="blog thumbnail" class="card__background--main" style="min-height:200px;height:auto;width:inherit;max-height:200px"/>
             </figure>
             <div class="blog-medium-caption">
               <a href="#"><i class="fa fa-camera"></i></a>
-              <h5><a [routerLink]="['/blog', blog.title]" (click)="setLocal(blog.blogid)" >{{ blog.title }}</a></h5>
-              <ul>
+              <h5 style="height:90px"><a [routerLink]="['/blog', blog.title]" (click)="setLocal(blog.blogid)" >{{ blog.title }}</a></h5>
+              <ul style="height:20px">
                 <li>
                   <a href="#">Posted Aug 19, 2015</a>
                 </li>
@@ -109,11 +109,11 @@
                 </li>
               </ul>
             <a></a>
-              <p  [innerHtml]="blog.desc"></p>
+              <p style="height:250px" [innerHtml]="blog.desc"></p>
             </div>
           </div>
         </div>
-     
+
         <div class="col-md-12 col-sm-12">
           <!--Pagination Start-->
                         <div class="iqoniq-pagination text-center">
@@ -161,13 +161,13 @@
                                 </li>
                               </ul>
                             </nav>
-                          </div> 
+                          </div>
                   </div>
                   <!--Pagination End-->
         </div>
       </div>
     </div>
-    <!--BLOG Medium PAGE END--> 
+    <!--BLOG Medium PAGE END-->
   </section>
 </div>
 <!--Iqoniq Content End-->

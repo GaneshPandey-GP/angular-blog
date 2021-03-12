@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from flask_cors import CORS, cross_origin
 class MongoAPI:
     def __init__(self, data):
-        self.client = MongoClient("mongodb://blog:impossible@52.237.72.43:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false")
+        self.client = MongoClient("mongodb://root:impossibleme@65.1.60.50:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false")
         database = data['database']
         collection = data['collection']
         cursor = self.client.get_database(database)
@@ -53,7 +53,7 @@ def index():
 @app.route('/create', methods=['POST'])
 def create():
     data = request.json
-    data2=json.loads('{"database":"Blog","collection":"sequences"}')
+    data2=json.loads('{"database":"ShivalikCollege","collection":"sequences"}')
     obj2 = MongoAPI(data2)
     sequenceType=data['sequenceType']
     idType=data['idType']
@@ -68,7 +68,7 @@ def create():
     obj1 = MongoAPI(data)
     response = obj1.write(data)
     cid2=cid+1
-    data3=json.loads('{"database":"Blog","collection":"sequences","Filter":{"'+sequenceType+'":'+str(cid)+'},"DataToBeUpdated":{"'+sequenceType+'":'+str(cid2)+'}}')
+    data3=json.loads('{"database":"ShivalikCollege","collection":"sequences","Filter":{"'+sequenceType+'":'+str(cid)+'},"DataToBeUpdated":{"'+sequenceType+'":'+str(cid2)+'}}')
     obj3 = MongoAPI(data3)
     obj3.update()
     return Response(response=json.dumps(response),

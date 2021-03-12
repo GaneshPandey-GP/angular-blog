@@ -53,7 +53,7 @@ def index():
 @app.route('/create', methods=['POST'])
 def create():
     data = request.json
-    data2=json.loads('{"database":"Blog","collection":"sequences"}')
+    data2=json.loads('{"database":"ShivalikCollege","collection":"sequences"}')
     obj2 = MongoAPI(data2)
     sequenceType=data['sequenceType']
     idType=data['idType']
@@ -68,7 +68,7 @@ def create():
     obj1 = MongoAPI(data)
     response = obj1.write(data)
     cid2=cid+1
-    data3=json.loads('{"database":"Blog","collection":"sequences","Filter":{"'+sequenceType+'":'+str(cid)+'},"DataToBeUpdated":{"'+sequenceType+'":'+str(cid2)+'}}')
+    data3=json.loads('{"database":"ShivalikCollege","collection":"sequences","Filter":{"'+sequenceType+'":'+str(cid)+'},"DataToBeUpdated":{"'+sequenceType+'":'+str(cid2)+'}}')
     obj3 = MongoAPI(data3)
     obj3.update()
     return Response(response=json.dumps(response),
@@ -124,8 +124,8 @@ def fetchWithLimit():
                     mimetype='application/json')
 if __name__ == '__main__':
     data={}
-    app.run(use_reloader=False, debug=True, port=5001, host='127.0.0.1')
-    #from gevent.pywsgi import WSGIServer
-    #app.debug = True
-    #http_server = WSGIServer(('', 5001), app)
-    #http_server.serve_forever()
+    # app.run(use_reloader=False, debug=True, port=5001, host='127.0.0.1')
+    from gevent.pywsgi import WSGIServer
+    app.debug = True
+    http_server = WSGIServer(('', 5002), app)
+    http_server.serve_forever()

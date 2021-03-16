@@ -108,7 +108,7 @@ export class AdminService {
     );
   }
 
-  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, title: any, desc: any, content: any, thumbnail: any){
+  createBlog(category:any, categoryid: any, subCategory: any, subCategoryid: any, date: any, pageTitle: any, metaKeywords: any, metaDescription: any, title: any, desc: any, content: any, thumbnail: any){
     return this.http.post<any>(this.createApiPath,{
       database:"ShivalikCollege",
       collection:"blog",
@@ -119,6 +119,10 @@ export class AdminService {
         categoryid: categoryid,
         subCategory: subCategory,
         subCategoryid: subCategoryid,
+        date: date,
+        pageTitle: pageTitle,
+        metaKeywords: metaKeywords,
+        metaDescription: metaDescription,
         title: title,
         desc: desc,
         content: content,

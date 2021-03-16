@@ -19,8 +19,11 @@ export class CreateBlogComponent implements OnInit {
     title: new FormControl(''),
     thumbnail: new FormControl(''),
     content: new FormControl(''),
-    desc: new FormControl('')
-
+    desc: new FormControl(''),
+    date: new FormControl(''),
+    metaKeywords: new FormControl(''),
+    metaDescription: new FormControl(''),
+    pageTitle: new FormControl('')
   })
 
   constructor(private adminService:AdminService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateBlogComponent>){}
@@ -87,7 +90,7 @@ export class CreateBlogComponent implements OnInit {
 
   submit() {
     this.adminService
-      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.title, this.createBlogForm.value.desc, this.createBlogForm.value.content, this.createBlogForm.value.thumbnail)
+      .createBlog(this.createBlogForm.value.subCategory.category, this.createBlogForm.value.subCategory.categoryid, this.createBlogForm.value.subCategory.name, this.createBlogForm.value.subCategory.subCategoryid, this.createBlogForm.value.date, this.createBlogForm.value.pageTitle, this.createBlogForm.value.metaKeywords, this.createBlogForm.value.metaDescription, this.createBlogForm.value.title, this.createBlogForm.value.desc, this.createBlogForm.value.content, this.createBlogForm.value.thumbnail)
       .subscribe(
         data => {
           console.log('data ', data);

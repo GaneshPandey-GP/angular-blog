@@ -23,6 +23,7 @@ export class BlogsComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.blogs = data;
+          console.log(this.blogs)
         }
       },
       (err) => console.log(err)
@@ -33,6 +34,8 @@ export class BlogsComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.allBlogs = data;
+          console.log(this.allBlogs)
+
           this.noOfBlogs = this.allBlogs.filter(
             (blog) => blog.isActive === 1
           ).length;

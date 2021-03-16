@@ -2,11 +2,8 @@
 <form class="create-category-form" [formGroup]="createCategoryForm" (ngSubmit)="createCategory()">
   <mat-form-field class="full-width">
     <mat-label>Name</mat-label>
-    <input type="text" matInput [formControl]="categoryNameControl" [errorStateMatcher]="matcher" placeholder="Example:- New Technology" formControlName="name">
+    <input type="text" matInput  [errorStateMatcher]="matcher" placeholder="Example:- New Technology" formControlName="name">
     <mat-hint color="accent">Enter a Category Name</mat-hint>
-    <mat-error *ngIf="categoryNameControl.hasError('required')">
-      Name is <strong>required</strong>
-    </mat-error>
   </mat-form-field>
 <div mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close color="warn">CLOSE</button>

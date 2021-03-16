@@ -18,16 +18,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./create-category.component.scss']
 })
 export class CreateCategoryComponent {
-  categoryNameControl = new FormControl('', [
-      Validators.required,
-    ]);
-
   matcher = new MyErrorStateMatcher();
   createCategoryForm = new FormGroup({
     name: new FormControl('')
   });
 
-  constructor(private adminService:AdminService, private router: Router, private _snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateCategoryComponent>){}
+  constructor(private adminService:AdminService, private _snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateCategoryComponent>){}
   
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

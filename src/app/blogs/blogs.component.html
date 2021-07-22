@@ -1,4 +1,4 @@
-<main class="main pt-4">
+<main class="main pt-4 mb-4">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
@@ -44,57 +44,7 @@
         <app-sidebar></app-sidebar>
       </div>
     </div>
-      <div class="col-md-12 col-sm-12">
-        <!--Pagination Start-->
-        <div class="iqoniq-pagination text-center">
-          <div class="wrapper">
-            <nav>
-              <ul class="pager">
-                <li class="pager__item pager__item--prev">
-                  <button class="pager__link" (click)="handlePagination('prev')"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="8"
-                      height="12"
-                      viewbox="0 0 8 12"
-                    >
-                      <g fill="none" fill-rule="evenodd">
-                        <path
-                          fill="#33313C"
-                          d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
-                        ></path>
-                      </g></svg
-                  ></button>
-                </li>
-                {{pageNo === 1 ? <span></span> :
-                <li class="pager__item"><a class="pager__link">...</a></li>
-                <li class="pager__item"><button class="pager__link" (click)="handlePagination('prev')">{{pageNo-1}}</button></li>
-                }}
-                <li class="pager__item active"><button class="pager__link">{{pageNo}}</button></li>
-                <li class="pager__item"><button class="pager__link" (click)="handlePagination('next')">{{pageNo + 1}}</button></li>
-                <li class="pager__item"><a class="pager__link">...</a></li>
-                <li class="pager__item pager__item--next">
-                  <button class="pager__link"  (click)="handlePagination('next')"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="8"
-                      height="12"
-                      viewbox="0 0 8 12"
-                    >
-                      <g fill="none" fill-rule="evenodd">
-                        <path
-                          fill="#33313C"
-                          d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"
-                        ></path>
-                      </g></svg
-                  ></button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-                <!--Pagination End-->
-      </div>
+      
     </div>
 
 </main>

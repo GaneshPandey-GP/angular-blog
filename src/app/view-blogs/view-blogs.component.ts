@@ -16,7 +16,7 @@ export class ViewBlogsComponent implements OnInit {
   blogs: any = [];
 
   ngOnInit() {
-    this.adminService.viewBlogs()
+    this.adminService.getBlogsList(0)
     .subscribe(
       data => {
         if(data.length == 0) {
@@ -24,6 +24,7 @@ export class ViewBlogsComponent implements OnInit {
         } else {
           this.blogs=data;
         }
+        console.log(data)
       },
       err => console.log(err)
     );

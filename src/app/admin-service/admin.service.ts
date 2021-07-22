@@ -8,12 +8,20 @@ import { map,catchError } from 'rxjs/operators';
 })
 export class AdminService {
 
-  apiPath='https://scapi.shivalikcollege.edu.in';
+  apiPath = 'https://sce-cms.shivalikcollege.edu.in';
+
+
+  getCategoriesApiPath = this.apiPath + '/getCategories';
+  getSubCategoriesApiPath = this.apiPath + '/getSubCategories';
+  getBlogsListApiPath = this.apiPath + '/getBlogsList2';
+  getBlogApiPath = this.apiPath + '/getBlogDetailsUrl';
+
   loginApiPath = this.apiPath+'/login';
   createApiPath = this.apiPath+'/create';
   readApiPath = this.apiPath+'/fetch';
   updateApiPath = this.apiPath+'/update';
   paginationFetch = this.apiPath+'/fetchWithLimit';
+
   blogs: any = [];
 
   constructor(private http: HttpClient) { }
@@ -241,24 +249,24 @@ export class AdminService {
       })
     );
   }
-  getBlog(blogid: any){
-    return this.http.post<any>(this.readApiPath,{
-      database:"ShivalikCollege",
-      collection:"blog",
-      Filter:{
-        blogid: blogid,
-        isActive:1
-      }
-    })
-    .pipe(
-      map((res: any) => {
-        return res;
-      }),
-      catchError((err) => {
-        return err;
-      })
-    );
-  }
+  // getBlog(blogid: any){
+  //   return this.http.post<any>(this.readApiPath,{
+  //     database:"ShivalikCollege",
+  //     collection:"blog",
+  //     Filter:{
+  //       blogid: blogid,
+  //       isActive:1
+  //     }
+  //   })
+  //   .pipe(
+  //     map((res: any) => {
+  //       return res;
+  //     }),
+  //     catchError((err) => {
+  //       return err;
+  //     })
+  //   );
+  // }
 
   updateCategory(categoryid: any, name: any){
     return this.http.post<any>(this.updateApiPath,{
@@ -372,6 +380,60 @@ filterByCategory(categoryid: any){
     })
   );
 }
+getCategories(): any{
+  return this.http.post<any>(this.getCategoriesApiPath, {})
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+
+getSubCategories(id: number): any{
+  return this.http.post<any>(this.getSubCategoriesApiPath, {
+    category: id
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+
+getBlogsList(id: number): any{
+  return this.http.post<any>(this.getBlogsListApiPath, {
+    category: id
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+getBlog(url: string): any{
+  return this.http.post<any>(this.getBlogApiPath, {
+    createUrl: url
+  })
+  .pipe(
+    map((res: any) => {
+      return res;
+    }),
+    catchError((err) => {
+      return err;
+    })
+  );
+}
+
+
 
 // getRecentBlog(){
 //   return this.http.post<any>(this.readApiPath,{

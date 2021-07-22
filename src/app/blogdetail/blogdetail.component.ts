@@ -25,13 +25,14 @@ export class BlogdetailComponent implements OnInit {
   }
   ngOnInit() {
     let createUrl = this.route.snapshot.params.createUrl;
-    this.adminService.getBlog2(createUrl)
+    this.adminService.getBlog(createUrl)
     .subscribe(
       data => {
         if(data.length == 0) {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.blog=data;
+          console.log(this.blog)
           this.setTitle(this.blog[0].createPageTitle);
               this.metaService.updateTag(
                 {

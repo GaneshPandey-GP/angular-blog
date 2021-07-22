@@ -31,12 +31,14 @@ export class BlogsComponent implements OnInit {
       },
       (err) => console.log(err)
     );
-    this.adminService.viewBlogs().subscribe(
+    this.adminService.getBlogsList(0).subscribe(
       (data) => {
+        console.log(data)
         if (data.length == 0) {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.allBlogs = data;
+          // console.log(this.allBlogs)
           this.noOfBlogs = this.allBlogs.filter(
             (blog) => blog.isActive === 1
           ).length;

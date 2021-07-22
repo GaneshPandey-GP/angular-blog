@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
     location.reload();
   }
   ngOnInit(): void {
-    this.adminService.viewBlogs().subscribe(
+    this.adminService.getBlogsList(0).subscribe(
       (data) => {
         if (data.length == 0) {
           throw new Error('Error Fetching Blogs... ');
@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
       (err) => console.log(err)
     );
     this.adminService
-      .viewCategories()
+      .getCategories()
       .subscribe(
         data => {
           if(data.length == 0) {

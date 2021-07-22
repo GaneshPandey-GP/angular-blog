@@ -19,13 +19,14 @@ export class ViewCategoriesComponent {
   }
   ngOnInit(): void {
     this.adminService
-      .viewCategories()
+      .getCategories()
       .subscribe(
         data => {
           if(data.length == 0) {
             throw new Error('Error Fetching Categories... ');
           } else {
             this.categories=data;
+            console.log(this.categories)
           }
         },
         err => console.log(err)

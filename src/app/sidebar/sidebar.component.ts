@@ -13,7 +13,10 @@ export class SidebarComponent implements OnInit {
   blogs: any = [];
 
   constructor(private adminService:AdminService ) { }
-
+  setLocal(blogid: any) {
+    localStorage.setItem('blogid', blogid);
+    location.reload();
+  }
   ngOnInit(): void {
     this.adminService.viewBlogs().subscribe(
       (data) => {
@@ -21,10 +24,7 @@ export class SidebarComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.allBlogs = data;
-          console.log(this.allBlogs)
-
-          this.recentBlogs = [this.allBlogs[this.allBlogs.length-1], this.allBlogs[this.allBlogs.length-2], this.allBlogs[this.allBlogs.length-3]]
-          console.log(this.recentBlogs)
+          this.recentBlogs = [this.allBlogs[this.allBlogs.length-1], this.allBlogs[this.allBlogs.length-2], this.allBlogs[this.allBlogs.length-3]];
         }
       },
       (err) => console.log(err)
@@ -51,8 +51,7 @@ export class SidebarComponent implements OnInit {
             throw new Error('Error Fetching Blogs... ');
           } else {
             this.blogs = data;
-            console.log(this.blogs)
-          }  
+          }
         },
         err => console.log(err)
       );

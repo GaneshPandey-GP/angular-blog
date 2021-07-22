@@ -223,7 +223,24 @@ export class AdminService {
       })
     );
   }
-
+  getBlog2(createUrl: any){
+    return this.http.post<any>(this.readApiPath,{
+      database:"ShivalikCollege",
+      collection:"blog",
+      Filter:{
+        createUrl: createUrl,
+        isActive:1
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
   getBlog(blogid: any){
     return this.http.post<any>(this.readApiPath,{
       database:"ShivalikCollege",
@@ -288,23 +305,54 @@ export class AdminService {
   }
 
 
-pagination(number:any){
-  return this.http.post<any>(this.paginationFetch,{
-    database:"ShivalikCollege",
-    collection:"blog",
-    Limit:4,
-    Skip:number,
-    Filter:{
-    }
-  })
-  .pipe(
-    map((res: any) => {
-      return res;
-    }),
-    catchError((err) => {
-      return err;
+pagination(number:any,id:any){
+  if(id==undefined){
+    return this.http.post<any>(this.paginationFetch,{
+      database:"ShivalikCollege",
+      collection:"blog",
+      Limit:4,
+      Skip:number,
+      Filter:{
+      }
     })
-  );
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
+  else{
+    console.log({
+      database:"ShivalikCollege",
+      collection:"blog",
+      Limit:4,
+      Skip:number,
+      Filter:{
+        createCategory:id
+      }
+    });
+
+    return this.http.post<any>(this.paginationFetch,{
+      database:"ShivalikCollege",
+      collection:"blog",
+      Limit:4,
+      Skip:number,
+      Filter:{
+        createCategory:id
+      }
+    })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
 }
 
 filterByCategory(categoryid: any){

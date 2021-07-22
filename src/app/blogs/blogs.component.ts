@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin-service/admin.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { parse } from 'angular-html-parser';
 
@@ -9,7 +10,7 @@ import { parse } from 'angular-html-parser';
   styleUrls: ['./blogs.component.scss'],
 })
 export class BlogsComponent implements OnInit {
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private route: ActivatedRoute, private router:Router) {}
   allBlogs: any = [];
   blogs: any = [];
   pageNo: any = 1;
@@ -17,13 +18,15 @@ export class BlogsComponent implements OnInit {
   currentValue: any = 0;
 
   ngOnInit() {
-    this.adminService.pagination(0).subscribe(
+    let id = this.route.snapshot.params.categoryid;
+    console.log(id);
+    this.adminService.pagination(0,id).subscribe(
       (data) => {
+        console.log(data);
         if (data.length == 0) {
-          throw new Error('Error Fetching Blogs... ');
+          this.router.navigate(['']);
         } else {
           this.blogs = data;
-          console.log(this.blogs)
         }
       },
       (err) => console.log(err)
@@ -34,8 +37,6 @@ export class BlogsComponent implements OnInit {
           throw new Error('Error Fetching Blogs... ');
         } else {
           this.allBlogs = data;
-          console.log(this.allBlogs)
-
           this.noOfBlogs = this.allBlogs.filter(
             (blog) => blog.isActive === 1
           ).length;
@@ -50,9 +51,11 @@ export class BlogsComponent implements OnInit {
   }
 
   handlePagination(value: any) {
+    let id = this.route.snapshot.params.categoryid;
+    console.log(id);
     if (value === 'prev') {
       if (this.currentValue > 0) {
-        this.adminService.pagination(this.currentValue - 2).subscribe(
+        this.adminService.pagination(this.currentValue - 2,id).subscribe(
           (data) => {
             if (data.length == 0) {
               throw new Error('Error Fetching Blogs... ');
@@ -69,7 +72,7 @@ export class BlogsComponent implements OnInit {
       }
     } else {
       if (this.currentValue < this.noOfBlogs) {
-        this.adminService.pagination(this.currentValue + 2).subscribe(
+        this.adminService.pagination(this.currentValue + 2,id).subscribe(
           (data) => {
             if (data.length == 0) {
               throw new Error('Error Fetching Blogs... ');

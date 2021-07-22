@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    if(this.userData.length > 0) this.isLoggedIn = true; else this.isLoggedIn = false;
+    if(this.userData!=undefined){
+    if(this.userData.length > 0) this.isLoggedIn = true; else this.isLoggedIn = false;}
   }
   toggleTheme(): void {
     if (this.overlay.getContainerElement().classList.contains("dark-theme")) {

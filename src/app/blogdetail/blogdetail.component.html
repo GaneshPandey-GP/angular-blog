@@ -1,85 +1,53 @@
-<!-- <div class="blog-container">
-
-    <div class="row">
-      <div class="col-lg-8">
-        <h1 class="mt-4">{{blog[0].title}}</h1>
-        <p class="lead">
-          by
-          <a target="_blank" href="https://shivalikcollege.edu.in">Shivalik College</a>
-        </p>
-
-        <hr>
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
-        <hr>
-        <img class="img-fluid rounded" src={{blog[0].thumbnail}} alt="">
-
-        <hr>
-        <div innerHTML = {{blog[0].content}}></div>
-        <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
-
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-        </div>
-
-
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-lg-4">
-        <app-sidebar></app-sidebar>
-        </div>
-    </div>
-  
-
-  </div> -->
-
-
-<div class="iner_banner">
+<main class="main pt-4">
   <div class="container">
-    <h5>Blog - detail</h5>
+    <div class="row">
+      <div class="col-md-9">
+        <article class="card mb-4">
+            <header class="card-header text-center">
+              <div class="card-meta">
+                <time class="timeago"  timeago-id="1">{{blog[0].createDate}}</time>
+              </div>
+              <a href="post-image.html">
+                <h1 class="card-title">{{blog[0].createTitle}}</h1>
+              </a>
+            </header>
+              <img class="card-img" src={{blog[0].createImage}} alt="">
+
+            <div class="card-body">
+              <div innerHTML={{blog[0].createBody}}>
+
+              </div>
+              <hr>
+              <h3>0 comments</h3>
+              
+
+              <div class="mt-5">
+                <h5>Write a response</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+                  </div>
+                </div>
+                <textarea class="form-control mt-3" rows="3" placeholder="Write a response.."></textarea>
+                <a href="#" class="btn btn-success mt-3">Publish</a>
+              </div>
+
+            </div>
+          </article>
+      </div>
+      <div class="col-md-3 ml-auto">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- <div class="iner_banner">
+  <div class="container">
+    <h5>{{blog[0].createTitle}}</h5>
     <div class="banner_iner_capstion">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Blog - detail</a></li>
-      </ul>
     </div>
   </div>
 </div>
@@ -92,148 +60,40 @@
           <div class="col-md-8">
             <div class="blog_detail_page">
               <figure>
-                <img src="{{blog[0].thumbnail}}" width="800px" height="800px" alt="">
+                <img src="{{blog[0].createImage}}" width="800px" height="800px" alt="">
               </figure>
-              <div class="iq_heading_1 text-left">
-                <h4>ASP.NET with <span>C #</span></h4>
-              </div>
               <ul class="blog_detail_navi">
                 <li>
-                  <a href="#">September 21, 2015</a>
-                </li>
-                <li>
-                  <a href="#">In Destination, Education</a>
-                </li>
-                <li>
-                  <a href="#">By Admin</a>
+                  <a href="#">{{blog[0].createDate}}</a>
                 </li>
               </ul>
-              <p innerHTML={{blog[0].content}}></p>
 
 
-              <div class="blog_quotes_prgh">
-                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
-                  vitae er auctor eu in elit. Class aptent taci ti sociosqu ad litora torquent per conubia nostra, per
-                  inceptos himenaeos.</p>
-              
+
+              <div class="blog_quotes_prgh"><br/>
+                <p innerHTML={{blog[0].createBody}}></p>
+
+
               </div>
-              <p>Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent
-                per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus
-                condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum
-                nunc. Etiam pharetra, erat sed fermentum feugiat .</p>
             </div>
             <div class="tags_wrap">
               <ul class="iq-tags">
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Champions</a></li>
+                <li><a href="#">Shivalik College</a></li>
               </ul>
               <ul class="iq_footer_social">
-                <li><a href="#" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-twitter"></a></li>
-                <li><a href="#" class="fa fa-rss"></a></li>
+                <li><a href="https://www.facebook.com/shivalikcollegeofficial" class="fa fa-facebook"></a></li>
+                <li><a href="https://www.instagram.com/shivalikcollegeofficial/" class="fa fa-instagram"></a></li>
+                <li><a href="https://www.youtube.com/channel/UCvCZgyhognVoP84pPmN6pzw" class="fa fa-youtube"></a></li>
               </ul>
             </div>
             <div class="blog_commenting">
               <div class="detail_searh_heading commenting">
                 <div class="iq_heading_1 text-left">
-                  <h4>Comment : <span>4</span></h4>
+                  <h4>Comment : <span>0</span></h4>
                 </div>
               </div>
               <ul class="blog_commenting_area">
-                <li>
-                  <div class="comment-thumb">
-                    <figure>
-                      <img src="assets/extra-images/comment-thumb.jpg" alt="">
-                    </figure>
-                    <div class="comment_caption">
-                      <div class="comment_caption-2">
-                        <span>
-                          <strong>
-                            Albrta Doe Wrote :
-                          </strong>
-                          <small>September 11, 2015</small>
-                        </span>
-                        <a class="comment-reply" href="#">Reply</a>
-                      </div>
-                      <div class="comment-reply-2">
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                          Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                          nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="comment-thumb">
-                    <figure>
-                      <img src="assets/extra-images/comment-thumb.jpg" alt="">
-                    </figure>
-                    <div class="comment_caption">
-                      <div class="comment_caption-2">
-                        <span>
-                          <strong>
-                            Albrta Doe Wrote :
-                          </strong>
-                          <small>September 11, 2015</small>
-                        </span>
-                        <a class="comment-reply" href="#">Reply</a>
-                      </div>
-                      <div class="comment-reply-2">
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                          Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                          nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                      </div>
-                    </div>
-                  </div>
-                  <ul>
-                    <li>
-                      <div class="comment-thumb">
-                        <figure>
-                          <img src="assets/extra-images/comment-thumb.jpg" alt="">
-                        </figure>
-                        <div class="comment_caption">
-                          <div class="comment_caption-2">
-                            <span>
-                              <strong>
-                                Albrta Doe Wrote :
-                              </strong>
-                              <small>September 11, 2015</small>
-                            </span>
-                            <a class="comment-reply" href="#">Reply</a>
-                          </div>
-                          <div class="comment-reply-2">
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                              Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="comment-thumb">
-                    <figure>
-                      <img src="assets/extra-images/comment-thumb.jpg" alt="">
-                    </figure>
-                    <div class="comment_caption">
-                      <div class="comment_caption-2">
-                        <span>
-                          <strong>
-                            Albrta Doe Wrote :
-                          </strong>
-                          <small>September 11, 2015</small>
-                        </span>
-                        <a class="comment-reply" href="#">Reply</a>
-                      </div>
-                      <div class="comment-reply-2">
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                          Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                          nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
             </div>
             <div class="blog_detail_searh">
@@ -265,10 +125,9 @@
             </div>
           </div>
           <div class="col-md-4">
-            <app-sidebar></app-sidebar>
           </div>
         </div>
       </div>
     </div>
   </section>
-</div>
+</div> -->

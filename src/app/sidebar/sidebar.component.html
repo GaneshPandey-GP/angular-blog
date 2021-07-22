@@ -1,103 +1,22 @@
-<!-- <div>
-    <div class="sidebar-heading mt-3">
-      <h2>Recent Posts</h2>
-    </div>
-    <div class="card mb-3 mt-3" *ngFor="let blog of recentBlogs">
-        <div class="row">
-          <div class="col-md-4">
-            <img
-              src={{blog.thumbnail}}
-              alt="---"
-              class="img-fluid"
-            />
-          </div>
-          <div class="col-md-8">
-            <div>
-                 <p class="card-text pt-2 pr-1">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-              <p class="card-text pr-1">
-                {{blog.title}}
-              </p>
-             
-              <a class="btn btn-outline-warning">Read</a>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-  
-  <div class="sidebar-item categories mt-2 mb-2">
-    <div class="sidebar-heading">
-      <h2>Categories</h2>
-    </div>
-    <div class="card pt-3">
-      <ul *ngFor="let category of categories">
-        <li class="btn-link" (click)="handleCategory(category.categoryid)">{{category.name}}</li>
+<aside class="sidebar sidebar-sticky">
+  <div class="aside-bar">
+    <div class="card-body">
+      <h4 class="card-title">Other Categories</h4>
+      <ul>
+        <li *ngFor="let item of categories">
+          <a [routerLink]="['/category', item.categoryid]">{{item.name}}</a><span></span>
+        </li>
       </ul>
     </div>
-  </div> -->
-
-<div class="aside-bar">
-  <div class="widget widget-search">
-    <form class="iq-input">
-      <input placeholder="Search ..." type="text">
-      <label class="iq-input-icon"><input type="submit"></label>
-    </form>
-  </div>
-
-  <div class="widget widget_archive">
-    <h5 class="widget-title"><span>our</span> Course</h5>
-    <ul>
-      <li>
-        <a href="#">Politics & History</a><span>03</span>
-      </li>
-      <li>
-        <a href="#">Journalism</a><span>01</span>
-      </li>
-      <li>
-        <a href="#">Medical Sciences</a><span>03</span>
-      </li>
-      <li>
-        <a href="#">Health</a><span>01</span>
-      </li>
-      <li>
-        <a href="#">Sports</a><span>03</span>
-      </li>
-      <li>
-        <a href="#">Atrs</a><span>02</span>
-      </li>
-      <li>
-        <a href="#">Tourism & Culture</a><span>06</span>
-      </li>
-    </ul>
-  </div>
-
-  <div class="widget widget-popular">
-    <h5 class="widget-title"><span>Popular</span>Blogs</h5>
-    <div class="popular_thumb" *ngFor="let blog of recentBlogs">
-      <figure>
-        <img src={{blog.thumbnail}} alt="" />
-      </figure>
-      <div class="overflow-text">
-        <h6><a href="#"> {{blog.title}}</a></h6>
-        <p>19 Dec, 2015</p>
+    <div class="card-body">
+      <h4 class="card-title">Latest Blogs</h4>
+      <div *ngFor="let blog of recentBlogs">
+        <a href="/blog/{{blog.createUrl}}" class="d-inline-block mt-3">
+          <h4 class="h6">{{blog.createTitle}}</h4>
+          <img class="card-img" src={{blog.createImage}} alt="">
+        </a>
+        <time class="timeago" datetime={{blog.createDate}}>{{blog.createDate}}</time>
       </div>
     </div>
-   
-
   </div>
-
-
-
-  <div class="widget widget-tag">
-
-    <h5 class="widget-title"><span>tags</span></h5>
-
-    <div class="tag" *ngFor="let category of categories">
-      <a class="btn-link tag-link" (click)="handleCategory(category.categoryid)">{{category.name}}</a>
-     
-    </div>
-  </div>
- 
-</div>
+</aside>
